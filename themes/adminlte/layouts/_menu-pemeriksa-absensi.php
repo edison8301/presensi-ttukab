@@ -10,7 +10,7 @@ use app\models\UserRole;
         'options' => ['class' => 'sidebar-menu', 'data-widget' => 'tree'],
         'items' => [
             ['label' => 'ABSENSI', 'options' => ['class' => 'header']],
-            ['label' => 'Unit Kerja', 'icon' => 'bank', 'items' => [
+            ['label' => 'Perangkat Daerah', 'icon' => 'bank', 'items' => [
                 ['label' => 'Rekap Absensi', 'url' => ['/absensi/instansi-rekap-absensi/index'], 'visible'=>UserMenu::findStatusAktif(['path'=>'/absensi/instansi-rekap-absensi/index'])],
             ]],
             ['label' => 'Pegawai', 'icon' => 'user', 'items' => [

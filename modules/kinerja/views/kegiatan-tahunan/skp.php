@@ -84,10 +84,10 @@ $pegawai = Pegawai::findOne($id_pegawai);
         </tr>
         <tr>
             <td style="text-align:center">5</td>
-            <td style="width:160px">Unit Kerja</td>
+            <td style="width:160px">Perangkat Daerah</td>
             <td colspan="2"><?= @$pegawai->atasan ? @$pegawai->atasan->instansi->nama : ""; ?></td>
             <td style="text-align: center">5</td>
-            <td colspan="2">Unit Kerja</td>
+            <td colspan="2">Perangkat Daerah</td>
             <td colspan="5"><?= $pegawai->instansi->nama; ?></td>
         </tr>
         <thead>

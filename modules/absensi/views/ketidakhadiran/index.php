@@ -85,14 +85,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 [
                     'attribute' => 'id_unit_kerja',
-                    'header' => 'Unit Kerja',
+                    'header' => 'Perangkat Daerah',
                     'format' => 'raw',
                     'filter' => Select2::widget([
                         'model' => $searchModel,
                         'attribute' => 'id_unit_kerja',
                         'data' => Instansi::getList(),
                         'options' => [
-                            'placeholder' => 'Unit Kerja',
+                            'placeholder' => 'Perangkat Daerah',
                         ],
                         'pluginOptions' => ['allowClear' => true],
                     ]),

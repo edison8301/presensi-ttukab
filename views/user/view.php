@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'value' => @$model->userRole->nama
                 ],
                 [
-                    'label' => 'Unit Kerja',
+                    'label' => 'Perangkat Daerah',
                     'value' => @$model->instansi->nama,
                     'visible' => $model->visibleIdInstansi()
                 ],
@@ -50,14 +50,14 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php if ($model->id_user_role == UserRole::ADMIN_INSTANSI) { ?>
     <div class="box box-primary user-view">
         <div class="box-header with-border">
-            <h3 class="box-title">Daftar Unit Kerja</h3>
+            <h3 class="box-title">Daftar Perangkat Daerah</h3>
         </div>
 
         <div class="box-body">
             <table class="table table-bordered">
                 <tr>
                     <th style="text-align: center; width: 60px">No</th>
-                    <th>Unit Kerja</th>
+                    <th>Perangkat Daerah</th>
                 </tr>
                 <?php $i = 1;
                 foreach (array_merge([$model->instansi], $model->instansi->manySub) as $userInstansi) { ?>
@@ -73,17 +73,17 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php if ($model->id_user_role == UserRole::VERIFIKATOR || $model->id_user_role == UserRole::MAPPING) { ?>
     <div class="box box-primary user-view">
         <div class="box-header with-border">
-            <h3 class="box-title">Daftar Unit Kerja</h3>
+            <h3 class="box-title">Daftar Perangkat Daerah</h3>
         </div>
         <div class="box-header with-border">
-            <?= Html::a('<i class="fa fa-plus"></i> Tambah Unit Kerja', ['user-instansi/create', 'id_user' => $model->id], ['class' => 'btn btn-primary btn-flat']); ?>
+            <?= Html::a('<i class="fa fa-plus"></i> Tambah Perangkat Daerah', ['user-instansi/create', 'id_user' => $model->id], ['class' => 'btn btn-primary btn-flat']); ?>
         </div>
 
         <div class="box-body">
             <table class="table table-bordered">
                 <tr>
                     <th style="text-align: center; width: 60px">No</th>
-                    <th>Unit Kerja</th>
+                    <th>Perangkat Daerah</th>
                     <th>&nbsp;</th>
                 </tr>
                 <?php $i = 1;

@@ -37,7 +37,7 @@ use yii\bootstrap\ActiveForm;
         <?= $form->field($model, 'id_instansi')->widget(Select2::class, [
             'data' => Instansi::getList(),
             'options' => [
-                'placeholder' => '- Pilih Unit Kerja -',
+                'placeholder' => '- Pilih Perangkat Daerah -',
             ],
             'pluginOptions' => [
                 'allowClear' => true,
@@ -47,7 +47,7 @@ use yii\bootstrap\ActiveForm;
         <?= $form->field($model, 'id_instansi_induk')->widget(Select2::class, [
             'data' => Instansi::getList(),
             'options' => [
-                'placeholder' => '- Pilih Unit Kerja Induk -',
+                'placeholder' => '- Pilih Perangkat Daerah Induk -',
             ],
             'pluginOptions' => [
                 'allowClear' => true,

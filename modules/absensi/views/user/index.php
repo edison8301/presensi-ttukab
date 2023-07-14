@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
-                'header'=>'Unit Kerja',
+                'header'=>'Perangkat Daerah',
                 'value'=>function($data) {
                     $absensiUser = $data->findAbsensiUser();
                     return $absensiUser->kode_unit_kerja;

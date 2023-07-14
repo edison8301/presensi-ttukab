@@ -38,7 +38,7 @@ use app\models\Instansi;
         <?= $form->field($model, 'id_instansi')->widget(Select2::class, [
             'data' => Instansi::getList(),
             'options' => [
-                'prompt' => '- Pilih Unit Kerja -'
+                'prompt' => '- Pilih Perangkat Daerah -'
             ]
         ]) ?>
 

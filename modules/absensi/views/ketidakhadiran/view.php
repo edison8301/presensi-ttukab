@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => @$model->pegawai->nip,
             ],
             [
-                'label' => 'Unit Kerja',
+                'label' => 'Perangkat Daerah',
                 'format' => 'raw',
                 'value' => @$model->pegawai->getNamaInstansi(),
             ],

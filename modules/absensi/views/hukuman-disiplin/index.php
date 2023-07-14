@@ -89,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 [
                     'attribute' => 'id_instansi',
-                    'header' => 'Unit Kerja',
+                    'header' => 'Perangkat Daerah',
                     'format' => 'raw',
                     'filter' => Instansi::getList(),
                     'value' => function (HukumanDisiplin $data) {

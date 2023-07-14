@@ -560,7 +560,7 @@ class InstansiController extends Controller
         $jumlahJabatan = count($arrayJabatan);
 
         $row = 1;
-        $sheet->setCellValue("A$row","Unit Kerja : $namaInstansi");
+        $sheet->setCellValue("A$row","Perangkat Daerah : $namaInstansi");
 
 
         $row = $row+2;

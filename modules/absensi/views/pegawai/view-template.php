@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <th style="text-align: center; vertical-align: middle; width: 60px">No</th>
             <th style="text-align: center; vertical-align: middle;">FingerID</th>
             <th style="text-align: center; vertical-align: middle;">SN</th>
-            <th style="text-align: center; vertical-align: middle;">Unit Kerja</th>
+            <th style="text-align: center; vertical-align: middle;">Perangkat Daerah</th>
         </tr>
         </thead>
         <?php $i=1; foreach($pegawai->allTemplate() as $template) { ?>

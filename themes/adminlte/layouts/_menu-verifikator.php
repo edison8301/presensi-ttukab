@@ -39,7 +39,7 @@ use app\models\UserRole;
             //['label' => 'ICLOCK', 'options' => ['class' => 'header']],
             //['label' => 'Checkinout', 'icon' => 'home', 'url' => ['/iclock/checkinout/index']],
             ['label' => 'MENU SISTEM', 'options' => ['class' => 'header']],
-            ['label' => 'Unit Kerja', 'icon' => 'building', 'url' => ['/instansi/index']],
+            ['label' => 'Perangkat Daerah', 'icon' => 'building', 'url' => ['/instansi/index']],
             ['label' => 'Pegawai', 'icon' => 'users', 'url' => ['/pegawai/index']],
             ['label' => 'Ganti Password', 'icon' => 'lock', 'url' => ['/user/change-password']],
             ['label' => 'Logout', 'url' => ['/site/logout'], 'icon' => 'power-off', 'template' => '<a href="{url}" data-method="post">{icon} {label}</a>' , 'visible' => !Yii::$app->user->isGuest],

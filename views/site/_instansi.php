@@ -7,7 +7,7 @@ use app\models\User;
 
 <div class="box box-primary">
 	<div class="box-header">
-		<h3 class="box-title">Daftar Unit Kerja</h3>
+		<h3 class="box-title">Daftar Perangkat Daerah</h3>
 	</div>
 	<div class="box-body">
 		<table class="table">

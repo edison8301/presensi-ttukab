@@ -6,7 +6,7 @@ use app\components\Helper;
 
 <div class="box box-success">
     <div class="box-header with-border">
-        <h3 class="box-title">Unit Kerja dan Jabatan Pegawai</h3>
+        <h3 class="box-title">Perangkat Daerah dan Jabatan Pegawai</h3>
     </div>
     <div class="box-header">
         <?= $this->render('_modal-instansi',['pegawai'=>$model]); ?>

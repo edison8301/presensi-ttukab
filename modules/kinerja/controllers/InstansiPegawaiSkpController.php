@@ -545,10 +545,10 @@ CSS;
         $sheet->setCellValue('I8', @$instansiPegawai->getNamaJabatan());
 
         $sheet->setCellValue('B9', '5');
-        $sheet->setCellValue('C9', 'Unit Kerja');
+        $sheet->setCellValue('C9', 'Perangkat Daerah');
         $sheet->setCellValue('D9', @$instansiPegawai->atasan->instansi->nama);
         $sheet->setCellValue('E9', '5');
-        $sheet->setCellValue('F9', 'Unit Kerja');
+        $sheet->setCellValue('F9', 'Perangkat Daerah');
         $sheet->setCellValue('I9', @$instansiPegawai->instansi->nama);
 
         $sheet->getStyle('B4:M4')->getFont()->setBold(true);

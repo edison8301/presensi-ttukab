@@ -39,7 +39,7 @@ use yii\helpers\Url;
                 <?= $form->field($searchModel, 'id_instansi')->widget(Select2::class, [
                     'data' => Instansi::getList(),
                     'options' => [
-                        'placeholder' => '- Semua Unit Kerja -',
+                        'placeholder' => '- Semua Perangkat Daerah -',
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,

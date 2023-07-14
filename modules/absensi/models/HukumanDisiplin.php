@@ -85,7 +85,7 @@ class HukumanDisiplin extends \yii\db\ActiveRecord
             'bulan' => 'Bulan',
             'tahun' => 'Tahun',
             'keterangan' => 'Keterangan',
-            'id_instansi' => 'Unit Kerja',
+            'id_instansi' => 'Perangkat Daerah',
             'status_hapus' => 'Status Hapus',
             'waktu_dihapus' => 'Waktu Dihapus',
             'namaHukumanDisiplinJenis' => 'Jenis'

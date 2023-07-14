@@ -50,7 +50,7 @@ class JabatanTunjanganKhususPegawai extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_jabatan_tunjangan_khusus_jenis' => 'Jenis',
             'id_pegawai' => 'Pegawai',
-            'id_instansi' => 'Unit Kerja',
+            'id_instansi' => 'Perangkat Daerah',
             'tanggal_mulai' => 'Tanggal Mulai',
             'tanggal_selesai' => 'Tanggal Selesai',
             'keterangan' => 'Keterangan',

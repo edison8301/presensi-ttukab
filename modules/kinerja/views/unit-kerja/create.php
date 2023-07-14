@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\kinerja\models\UnitKerja */
 
-$this->title = 'Create Unit Kerja';
-$this->params['breadcrumbs'][] = ['label' => 'Unit Kerjas', 'url' => ['index']];
+$this->title = 'Create Perangkat Daerah';
+$this->params['breadcrumbs'][] = ['label' => 'Perangkat Daerahs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="unit-kerja-create">

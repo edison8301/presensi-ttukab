@@ -51,7 +51,7 @@ class PerawatanController extends \yii\web\Controller
         $sheet->setCellValue('B3', 'Nama');
         $sheet->setCellValue('C3', 'NIP');
         $sheet->setCellValue('D3', 'Jumlah Userinfo');
-        $sheet->setCellValue('E3', 'Unit Kerja');
+        $sheet->setCellValue('E3', 'Perangkat Daerah');
 
         $PHPExcel->getActiveSheet()->setCellValue('A1', 'Data KegiatanHarian');
 

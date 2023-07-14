@@ -83,7 +83,7 @@ class InstansiRekapAbsensiController extends Controller
             }
         }
 
-        Yii::$app->session->setFlash('success','Setup unit kerja instansi berhasil dilakukan');
+        Yii::$app->session->setFlash('success','Setup perangkat daerah instansi berhasil dilakukan');
         return $this->redirect(Yii::$app->request->referrer);
     }
 
@@ -259,7 +259,7 @@ class InstansiRekapAbsensiController extends Controller
         $sheet->getColumnDimension('H')->setWidth(20);
 
         $sheet->setCellValue('A3', 'No');
-        $sheet->setCellValue('B3', 'Unit Kerja');
+        $sheet->setCellValue('B3', 'Perangkat Daerah');
         $sheet->setCellValue('C3', 'Bulan');
         $sheet->setCellValue('D3', 'Tahun');
         $sheet->setCellValue('E3', 'Persen Hadir');
@@ -267,7 +267,7 @@ class InstansiRekapAbsensiController extends Controller
         $sheet->setCellValue('G3', 'Persen Tanpa Keterangan');
         $sheet->setCellValue('H3', 'Waktu Diperbarui');
 
-        $sheet->setCellValue('A1', 'Data Rekap Kehadiran Unit Kerja');
+        $sheet->setCellValue('A1', 'Data Rekap Kehadiran Perangkat Daerah');
 
         $sheet->mergeCells('A1:H1');
 

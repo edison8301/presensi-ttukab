@@ -34,13 +34,13 @@ $this->title = 'Daftar Rekap Absensi';
         <table class="table table-bordered table-condensed">
             <tr>
                 <th style="text-align: center; width: 50px;">No</th>
-                <th style="text-align: center; width: 250px;">Unit Kerja</th>
+                <th style="text-align: center; width: 250px;">Perangkat Daerah</th>
                 <th>Nama Pegawai</th>
                 <th style="text-align: center; width: 200px;">Waktu Absen</th>
             </tr>
             <?php if ($pegawaiPetaAbsensiForm->id_instansi == null) { ?>
                 <tr>
-                    <td colspan="4"><i>Silahkan pilih unit kerja terlebih dahulu</i></td>
+                    <td colspan="4"><i>Silahkan pilih perangkat daerah terlebih dahulu</i></td>
                 </tr>
             <?php } ?>
             <?php $no=1; foreach ($allPegawaiPetaAbsensiReport as $pegawaiPetaAbsensiReport) { ?>

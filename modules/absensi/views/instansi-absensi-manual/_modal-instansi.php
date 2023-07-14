@@ -25,7 +25,7 @@ $dataProvider->pagination = ['pageSize'=>5];
 ?>
 
 <?php Modal::begin([
-    'header' => '<h4 class="modal-title">Pilih Unit Kerja</h4>',
+    'header' => '<h4 class="modal-title">Pilih Perangkat Daerah</h4>',
     'id' => "modal-pegawai",
     'size' => Modal::SIZE_LARGE,
     'toggleButton' => [

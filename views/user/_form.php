@@ -41,7 +41,7 @@ use app\models\Grup;
         <?php } ?>
 
         <?php if($model->visibleIdInstansi()) { ?>
-        <?= $form->field($model, 'id_instansi')->dropDownList(Instansi::getList(),['prompt'=>'- Pilih Unit Kerja -']) ?>
+        <?= $form->field($model, 'id_instansi')->dropDownList(Instansi::getList(),['prompt'=>'- Pilih Perangkat Daerah -']) ?>
         <?php } ?>
 
         <?php if($model->visibleIdGrup()) { ?>

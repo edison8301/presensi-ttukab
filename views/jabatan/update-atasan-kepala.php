@@ -41,7 +41,7 @@ use yii\web\View;
 
         <?= $form->errorSummary($model) ?>
 
-        <?= $form->field($model, 'namaInstansi')->textarea(['rows'=>3,'readonly'=>'readonly'])->label("Unit Kerja") ?>
+        <?= $form->field($model, 'namaInstansi')->textarea(['rows'=>3,'readonly'=>'readonly'])->label("Perangkat Daerah") ?>
 
         <?= $form->field($model, 'nama')->textArea([
             'rows' => 3,

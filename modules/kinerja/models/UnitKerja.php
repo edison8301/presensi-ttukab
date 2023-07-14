@@ -47,7 +47,7 @@ class UnitKerja extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'unit_kerja' => 'Unit Kerja',
+            'unit_kerja' => 'Perangkat Daerah',
         ];
     }
 

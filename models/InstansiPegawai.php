@@ -111,7 +111,7 @@ class InstansiPegawai extends ActiveRecord
         return [
             'id' => 'ID',
             'tahun' => 'Tahun',
-            'id_instansi' => 'Unit Kerja',
+            'id_instansi' => 'Perangkat Daerah',
             'id_pegawai' => 'Pegawai',
             'id_golongan' => 'Golongan',
             'id_eselon' => 'Eselon',

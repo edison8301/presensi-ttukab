@@ -31,7 +31,7 @@ echo Menu::widget([
         ['label' => 'MENU SISTEM', 'options' => ['class' => 'header']],
         ['label' => 'Pengumuman', 'icon' => 'bullhorn', 'url' => ['/pengumuman/index']],
         ['label' => 'Pengaturan', 'icon' => 'wrench', 'url' => ['/pengaturan/index']],
-        ['label' => 'Unit Kerja', 'icon' => 'building', 'url' => ['/instansi/index']],
+        ['label' => 'Perangkat Daerah', 'icon' => 'building', 'url' => ['/instansi/index']],
         ['label' => 'Pegawai', 'icon' => 'user', 'url' => ['/pegawai/index']],
         ['label' => 'Grup Pegawai', 'icon' => 'users', 'url' => ['/grup/index']],
         ['label' => 'Jabatan', 'icon' => 'star', 'url' => ['/jabatan/index']],

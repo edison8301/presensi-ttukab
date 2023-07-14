@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="instansi-view box box-primary">
     <div class="box-header">
-        <h3 class="box-title">Unit Kerja</h3>
+        <h3 class="box-title">Perangkat Daerah</h3>
     </div>
     <div class="box-body">
         <?= DetailView::widget([
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </div>
     <div class="box-footer">
-        <?= Html::a('<i class="fa fa-list"></i> Daftar Unit Kerja', [
+        <?= Html::a('<i class="fa fa-list"></i> Daftar Perangkat Daerah', [
             '/instansi/index-rekap-kinerja',
         ], ['class' => 'btn btn-warning btn-flat']) ?>
     </div>

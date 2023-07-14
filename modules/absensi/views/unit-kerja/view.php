@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\kinerja\models\UnitKerja */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Unit Kerjas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Perangkat Daerahs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="unit-kerja-view">

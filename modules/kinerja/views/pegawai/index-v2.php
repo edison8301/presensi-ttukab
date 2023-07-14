@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'id_instansi',
                         'data' => Instansi::getList(),
                         'options' => [
-                            'placeholder' => 'Unit Kerja',
+                            'placeholder' => 'Perangkat Daerah',
                         ],
                         'pluginOptions' => ['allowClear' => true],
                     ]),

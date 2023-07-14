@@ -17,7 +17,7 @@ if(Yii::$app->params['mode']=='tukin') {
         'items' => [
             ['label' => 'ABSENSI', 'options' => ['class' => 'header']],
             ['label' => 'Dashboard', 'icon' => 'dashboard', 'url' => ['/absensi/dasbor/index']],
-            ['label' => 'Unit Kerja', 'icon' => 'bank', 'items' => [
+            ['label' => 'Perangkat Daerah', 'icon' => 'bank', 'items' => [
                 ['label' => 'Aktivitas Absensi', 'url' => ['/absensi/instansi/index']],
                 ['label' => 'Rekap Absensi', 'url' => ['/absensi/instansi-rekap-absensi/index']],
                 ['label' => 'Absensi Manual', 'url' => ['/absensi/instansi-absensi-manual/index', 'mode' => 1]],
@@ -36,7 +36,7 @@ if(Yii::$app->params['mode']=='tukin') {
             ]],
             /*
             ['label' => 'Absensi Manual', 'icon' => 'book', 'items' => [
-                ['label' => 'Unit Kerja', 'icon' => 'circle-o', 'url' => ['/absensi/instansi-absensi-manual/index', 'mode' => 2]],
+                ['label' => 'Perangkat Daerah', 'icon' => 'circle-o', 'url' => ['/absensi/instansi-absensi-manual/index', 'mode' => 2]],
                 ['label' => 'Pegawai', 'icon' => 'circle-o', 'url' => ['/absensi/pegawai-absensi-manual/index']],
             ]],
             */
@@ -175,13 +175,13 @@ if(Yii::$app->params['mode']=='tukin') {
             ['label' => 'Pengumuman', 'icon' => 'bullhorn', 'url' => ['/pengumuman/index']],
             ['label' => 'Pengaturan', 'icon' => 'wrench', 'url' => ['/pengaturan/index']],
             ['label' => 'Peta', 'icon' => 'map-marker', 'items' => [
-                ['label' => 'Unit Kerja', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'instansi']],
+                ['label' => 'Perangkat Daerah', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'instansi']],
                 ['label' => 'Pegawai', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'pegawai']],
                 ['label' => 'Pegawai (Rumah/WFH)', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'pegawai-wfh']],
                 ['label' => 'Khusus', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'khusus']],
             ]],
-            ['label' => 'Unit Kerja', 'icon' => 'building', 'items'=>[
-                ['label'=>'Unit Kerja','url' => ['/instansi/index']],
+            ['label' => 'Perangkat Daerah', 'icon' => 'building', 'items'=>[
+                ['label'=>'Perangkat Daerah','url' => ['/instansi/index']],
                 ['label'=>'Bidang','url' => ['/instansi-bidang/index']],
                 ['label'=>'Lokasi','url' => ['/instansi/index-lokasi']],
                 ['label'=>'Induk','url' => ['/instansi/index-induk']],
@@ -255,7 +255,7 @@ if(Yii::$app->params['mode']=='skp-ckhp') {
             ['label' => 'MENU SISTEM', 'options' => ['class' => 'header']],
             ['label' => 'Pengumuman', 'icon' => 'bullhorn', 'url' => ['/pengumuman/index']],
             ['label' => 'Pengaturan', 'icon' => 'wrench', 'url' => ['/pengaturan/index']],
-            ['label' => 'Unit Kerja', 'icon' => 'building', 'url' => ['/instansi/index']],
+            ['label' => 'Perangkat Daerah', 'icon' => 'building', 'url' => ['/instansi/index']],
             ['label' => 'Pegawai', 'icon' => 'user', 'url' => ['/pegawai/index']],
             ['label' => 'Grup Pegawai', 'icon' => 'users', 'url' => ['/grup/index']],
             ['label' => 'Jabatan', 'icon' => 'star', 'url' => ['/jabatan/index']],
@@ -263,7 +263,7 @@ if(Yii::$app->params['mode']=='skp-ckhp') {
             ['label' => 'User', 'icon' => 'user', 'items' => [
                 ['label' => 'Admin', 'url' => ['/user/index', 'id_user_role' => UserRole::ADMIN]],
                 ['label' => 'Pegawai', 'url' => ['/user/index', 'id_user_role' => UserRole::PEGAWAI]],
-                ['label' => 'Unit Kerja', 'url' => ['/user/index', 'id_user_role' => UserRole::INSTANSI]],
+                ['label' => 'Perangkat Daerah', 'url' => ['/user/index', 'id_user_role' => UserRole::INSTANSI]],
                 ['label' => 'Verifikator', 'url' => ['/user/index', 'id_user_role' => UserRole::VERIFIKATOR]],
                 ['label' => 'Grup', 'url' => ['/user/index', 'id_user_role' => UserRole::GRUP]],
                 ['label' => 'Mapping', 'url' => ['/user/index', 'id_user_role' => UserRole::MAPPING]],
@@ -283,7 +283,7 @@ if(Yii::$app->params['mode']=='absensi') {
         'items' => [
             ['label' => 'ABSENSI', 'options' => ['class' => 'header']],
             ['label' => 'Dashboard', 'icon' => 'dashboard', 'url' => ['/absensi/dasbor/index']],
-            ['label' => 'Unit Kerja', 'icon' => 'bank', 'items' => [
+            ['label' => 'Perangkat Daerah', 'icon' => 'bank', 'items' => [
                 ['label' => 'Aktivitas Absensi', 'url' => ['/absensi/instansi/index']],
                 ['label' => 'Rekap Absensi', 'url' => ['/absensi/instansi-rekap-absensi/index']],
                 ['label' => 'Mesin Absensi', 'url' => ['/absensi/instansi/index-mesin-absensi']],
@@ -358,7 +358,7 @@ if(Yii::$app->params['mode']=='absensi') {
             ['label' => 'MENU SISTEM', 'options' => ['class' => 'header']],
             ['label' => 'Pengumuman', 'icon' => 'bullhorn', 'url' => ['/pengumuman/index']],
             ['label' => 'Pengaturan', 'icon' => 'wrench', 'url' => ['/pengaturan/index']],
-            ['label' => 'Unit Kerja', 'icon' => 'building', 'url' => ['/instansi/index']],
+            ['label' => 'Perangkat Daerah', 'icon' => 'building', 'url' => ['/instansi/index']],
             ['label' => 'Pegawai', 'icon' => 'user', 'url' => ['/pegawai/index']],
             ['label' => 'Grup Pegawai', 'icon' => 'users', 'url' => ['/grup/index']],
             ['label' => 'Jabatan', 'icon' => 'star', 'url' => ['/jabatan/index']],
@@ -366,7 +366,7 @@ if(Yii::$app->params['mode']=='absensi') {
             ['label' => 'User', 'icon' => 'user', 'items' => [
                 ['label' => 'Admin', 'url' => ['/user/index', 'id_user_role' => UserRole::ADMIN]],
                 ['label' => 'Pegawai', 'url' => ['/user/index', 'id_user_role' => UserRole::PEGAWAI]],
-                ['label' => 'Unit Kerja', 'url' => ['/user/index', 'id_user_role' => UserRole::INSTANSI]],
+                ['label' => 'Perangkat Daerah', 'url' => ['/user/index', 'id_user_role' => UserRole::INSTANSI]],
                 ['label' => 'Verifikator', 'url' => ['/user/index', 'id_user_role' => UserRole::VERIFIKATOR]],
                 ['label' => 'Grup', 'url' => ['/user/index', 'id_user_role' => UserRole::GRUP]],
                 ['label' => 'Mapping', 'url' => ['/user/index', 'id_user_role' => UserRole::MAPPING]],

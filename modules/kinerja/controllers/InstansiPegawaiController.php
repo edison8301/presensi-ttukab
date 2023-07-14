@@ -164,7 +164,7 @@ class InstansiPegawaiController extends Controller
 
         if(Yii::$app->request->get('kirim-dokumen') !== null) {
             if($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(Yii::$app->request->referrer);
             }
 
@@ -190,7 +190,7 @@ class InstansiPegawaiController extends Controller
 
         if (Yii::$app->request->get('export-excel')) {
             if($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(Yii::$app->request->referrer);
             }
 
@@ -212,7 +212,7 @@ class InstansiPegawaiController extends Controller
 
         if (Yii::$app->request->get('export-excel')) {
             if($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(Yii::$app->request->referrer);
             }
 
@@ -469,10 +469,10 @@ CSS;
         $sheet->setCellValue('I8', @$instansiPegawai->nama_jabatan);
 
         $sheet->setCellValue('B9', '5');
-        $sheet->setCellValue('C9', 'Unit Kerja');
+        $sheet->setCellValue('C9', 'Perangkat Daerah');
         $sheet->setCellValue('D9', @$instansiPegawai->atasan->instansi->nama);
         $sheet->setCellValue('E9', '5');
-        $sheet->setCellValue('F9', 'Unit Kerja');
+        $sheet->setCellValue('F9', 'Perangkat Daerah');
         $sheet->setCellValue('I9', @$instansiPegawai->instansi->nama);
 
         $sheet->getStyle('B4:M4')->getFont()->setBold(true);
@@ -1053,7 +1053,7 @@ CSS;
         $sheet->getStyle('A2:F2')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
         $sheet->setCellValue('A4', 'Bulan : ' . Helper::getBulanLengkap($bulan) . ' ' . Session::getTahun());
-        $sheet->setCellValue('A5', 'Unit Kerja : ' . $instansi->nama);
+        $sheet->setCellValue('A5', 'Perangkat Daerah : ' . $instansi->nama);
 
         $sheet->setCellValue('A6', 'NO');
         $sheet->setCellValue('B6', 'TANGGAL');

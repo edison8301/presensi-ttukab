@@ -9,7 +9,7 @@ $this->title = 'Matriks Pembagian Peran Hasil';
 
 <?php if ($searchModel->id_instansi == null) { ?>
     <div class="callout callout-info">
-        <p>Silahkan pilih unit kerja terlebih dahulu</p>
+        <p>Silahkan pilih perangkat daerah terlebih dahulu</p>
     </div>
 <?php } ?>
 

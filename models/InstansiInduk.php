@@ -43,8 +43,8 @@ class InstansiInduk extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_instansi' => 'Unit Kerja',
-            'id_instansi_induk' => 'Unit Kerja Induk',
+            'id_instansi' => 'Perangkat Daerah',
+            'id_instansi_induk' => 'Perangkat Daerah Induk',
             'tanggal_mulai' => 'Tanggal Mulai',
             'tanggal_selesai' => 'Tanggal Selesai',
         ];

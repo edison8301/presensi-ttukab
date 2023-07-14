@@ -109,7 +109,7 @@ class InstansiPegawaiController extends Controller
 
         if (isset($_GET['export-pdf'])) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['index-pegawai']);
             }
             if($searchModel->bulan == null) {
@@ -122,7 +122,7 @@ class InstansiPegawaiController extends Controller
 
         if(Yii::$app->request->get('kirim-dokumen') !== null) {
             if($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['index-pegawai']);
             }
             if($searchModel->bulan == null) {
@@ -139,7 +139,7 @@ class InstansiPegawaiController extends Controller
 
         if (isset($_GET['refresh'])) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['index-pegawai']);
             }
 

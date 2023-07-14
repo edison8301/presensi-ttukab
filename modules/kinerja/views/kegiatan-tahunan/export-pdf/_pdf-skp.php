@@ -50,10 +50,10 @@ use app\modules\kinerja\models\KegiatanTahunan;
 </tr>
 <tr>
     <td style="text-align:center; padding: 3px">5</td>
-    <td style="width:160px; padding: 10px">Unit Kerja</td>
+    <td style="width:160px; padding: 10px">Perangkat Daerah</td>
     <td colspan="2"><?= @$pegawai->atasan->instansi->nama; ?></td>
     <td style="text-align: center; padding: 10px">5</td>
-    <td colspan="2">Unit Kerja</td>
+    <td colspan="2">Perangkat Daerah</td>
     <td colspan="5" style="padding: 10px"><?= @$pegawai->atasan->instansi->nama; ?></td>
 </tr>
 <tr>

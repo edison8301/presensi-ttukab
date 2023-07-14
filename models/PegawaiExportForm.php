@@ -55,7 +55,7 @@ class PegawaiExportForm extends Model
             static::ALAMAT => 'Alamat',
             static::TELEPON => 'Telepon',
             static::EMAIL => 'Email',
-            static::INSTANSI => 'Unit Kerja',
+            static::INSTANSI => 'Perangkat Daerah',
             static::JABATAN => 'Jabatan',
             static::GOLONGAN => 'Golongan',
             static::JENIS_JABATAN => 'Jenis Jabatan',

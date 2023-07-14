@@ -44,8 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="box-footer">
-        <?= Html::a('<i class="fa fa-pencil"></i> Ubah Absensi Manual Unit Kerja', ['update', 'id' => $model->id], ['class' => 'btn btn-success btn-flat']) ?>
-        <?= Html::a('<i class="fa fa-list"></i> Daftar Absensi Manual Unit Kerja', ['index'], ['class' => 'btn btn-warning btn-flat']) ?>
+        <?= Html::a('<i class="fa fa-pencil"></i> Ubah Absensi Manual Perangkat Daerah', ['update', 'id' => $model->id], ['class' => 'btn btn-success btn-flat']) ?>
+        <?= Html::a('<i class="fa fa-list"></i> Daftar Absensi Manual Perangkat Daerah', ['index'], ['class' => 'btn btn-warning btn-flat']) ?>
     </div>
 
 </div>

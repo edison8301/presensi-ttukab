@@ -82,7 +82,7 @@ class PegawaiController extends Controller
 
         if (isset($_GET['export-pdf'])) {
             if ($pegawaiSearch->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['index']);
             }
 
@@ -91,7 +91,7 @@ class PegawaiController extends Controller
 
         if (isset($_GET['refresh'])) {
             if ($pegawaiSearch->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['index']);
             }
 
@@ -126,7 +126,7 @@ class PegawaiController extends Controller
 
         if (isset($_GET['export-pdf'])) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['index']);
             }
 
@@ -168,7 +168,7 @@ class PegawaiController extends Controller
 
         if (isset($_GET['export-pdf'])) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['index']);
             }
 
@@ -188,7 +188,7 @@ class PegawaiController extends Controller
 
         if (isset($_GET['export-pdf'])) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['index']);
             }
 
@@ -208,7 +208,7 @@ class PegawaiController extends Controller
 
         if (isset($_GET['export-pdf'])) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['index']);
             }
 

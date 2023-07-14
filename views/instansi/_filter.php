@@ -21,13 +21,13 @@ use app\models\Instansi;
 <div class="instansi-form box box-primary">
 
     <div class="box-header">
-        <h3 class="box-title">Filter Unit Kerja</h3>
+        <h3 class="box-title">Filter Perangkat Daerah</h3>
     </div>
     <div class="box-body">
 
-        <?= $form->field($searchModel, 'id_induk')->dropDownList(Instansi::getListInduk(),['prompt'=>'- Pilih Unit Kerja Induk -']) ?>
+        <?= $form->field($searchModel, 'id_induk')->dropDownList(Instansi::getListInduk(),['prompt'=>'- Pilih Perangkat Daerah Induk -']) ?>
 
-        <?= $form->field($searchModel, 'id_instansi_jenis')->dropDownList(InstansiJenis::getList(),['prompt'=>'- Pilih Jenis Unit Kerja -']) ?>
+        <?= $form->field($searchModel, 'id_instansi_jenis')->dropDownList(InstansiJenis::getList(),['prompt'=>'- Pilih Jenis Perangkat Daerah -']) ?>
 
         <div class="form-group">
             <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

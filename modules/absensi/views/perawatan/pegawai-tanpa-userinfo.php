@@ -25,7 +25,7 @@ $this->title ="Pegawai Tanpa Userinfo";
 			<th style="text-align: center">Nama</th>
 			<th style="text-align: center">NIP</th>
 			<th style="text-align: center">Jumlah Userinfo</th>
-			<th style="text-align: center">Unit Kerja</th>
+			<th style="text-align: center">Perangkat Daerah</th>
             <th></th>
 		</tr>
 		<?php

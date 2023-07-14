@@ -10,7 +10,7 @@ use kartik\grid\GridView;
 /* @var $searchModel app\models\InstansiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Daftar Unit Kerja';
+$this->title = 'Daftar Perangkat Daerah';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions'=>['style'=>'text-align:left;'],
             ],
             [
-                'label'=>'Unit Kerja Induk',
+                'label'=>'Perangkat Daerah Induk',
                 'format'=>'raw',
                 'value' => function(Instansi $data) {
                     return @$data->instansiIndukBerlaku->instansiInduk->nama;

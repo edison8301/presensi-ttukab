@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => @$model->pegawai->nama.' ('.@$model->pegawai->nip.')'
             ],
             [
-                'label' => 'Unit Kerja',
+                'label' => 'Perangkat Daerah',
                 'format' => 'raw',
                 'value' => $model->instansi->nama,
             ],
@@ -119,10 +119,10 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
             <tr>
                 <td style="text-align:center">5</td>
-                <td style="width:160px">Unit Kerja</td>
+                <td style="width:160px">Perangkat Daerah</td>
                 <td colspan="2"><?= @$model->instansiPegawai->atasan ? @$model->instansiPegawai->atasan->getNamaInstansi() : ""; ?></td>
                 <td style="text-align: center">5</td>
-                <td colspan="2">Unit Kerja</td>
+                <td colspan="2">Perangkat Daerah</td>
                 <td colspan="5"><?= $model->instansiPegawai->instansi->nama; ?></td>
             </tr>
             <thead>

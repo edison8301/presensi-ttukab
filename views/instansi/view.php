@@ -6,14 +6,14 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Instansi */
 
-$this->title = "Detail Unit Kerja";
+$this->title = "Detail Perangkat Daerah";
 $this->params['breadcrumbs'][] = ['label' => 'Instansi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="instansi-view box box-primary">
 
     <div class="box-header">
-        <h3 class="box-title">Detail Unit Kerja</h3>
+        <h3 class="box-title">Detail Perangkat Daerah</h3>
     </div>
 
 	<div class="box-body">
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="box-footer">
         <?= $model->getLinkButtonUpdate(); ?>
-        <?= Html::a('<i class="fa fa-list"></i> Daftar Unit Kerja', ['index'], ['class' => 'btn btn-warning btn-flat']) ?>
+        <?= Html::a('<i class="fa fa-list"></i> Daftar Perangkat Daerah', ['index'], ['class' => 'btn btn-warning btn-flat']) ?>
     </div>
 
 </div>

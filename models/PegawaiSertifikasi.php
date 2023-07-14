@@ -47,7 +47,7 @@ class PegawaiSertifikasi extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_pegawai' => 'Pegawai',
-            'id_instansi' => 'Unit Kerja',
+            'id_instansi' => 'Perangkat Daerah',
             'tanggal_mulai' => 'Tanggal Mulai',
             'tanggal_selesai' => 'Tanggal Selesai',
             'id_pegawai_sertifikasi_jenis' => 'Jenis',

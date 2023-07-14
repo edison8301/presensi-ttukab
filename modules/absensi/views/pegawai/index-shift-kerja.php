@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'id_instansi',
-                'label' => 'Unit Kerja',
+                'label' => 'Perangkat Daerah',
                 'format' => 'raw',
                 'value' => function (Pegawai $data) {
                     return $data->getNamaInstansi();

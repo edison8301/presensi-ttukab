@@ -94,7 +94,7 @@ class PegawaiRekapAbsensiController extends Controller
 
         if (isset($_GET['export-pdf'])) {
             if ($pegawaiRekapAbsensiSearch->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['index']);
             }
 
@@ -103,7 +103,7 @@ class PegawaiRekapAbsensiController extends Controller
 
         if (Yii::$app->request->get('refresh')) {
             if ($pegawaiRekapAbsensiSearch->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['index']);
             }
 
@@ -160,7 +160,7 @@ class PegawaiRekapAbsensiController extends Controller
             }
             if (Yii::$app->request->get('export-pdf')) {
                 if ($pegawaiRekapAbsensiSearch->id_instansi == null) {
-                    Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                    Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                     return $this->redirect(['index']);
                 }
 

@@ -25,7 +25,7 @@ $this->title ="Pegawai Tanpa Checkinout";
 			<th style="text-align: center">Nama</th>
 			<th style="text-align: center">NIP</th>
 			<th style="text-align: center">Jumlah Checkinout</th>
-			<th style="text-align: center">Unit Kerja</th>
+			<th style="text-align: center">Perangkat Daerah</th>
 		</tr>
 		<?php
 			$query = Pegawai::find();

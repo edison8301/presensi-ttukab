@@ -72,7 +72,7 @@ class Berkas extends \yii\db\ActiveRecord
             'nip_tandatangan' => 'Nip Tandatangan',
             'waktu_tandatangan' => 'Waktu Tandatangan',
             'id_aplikasi' => 'Aplikasi',
-            'id_instansi' => 'Unit Kerja',
+            'id_instansi' => 'Perangkat Daerah',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'deleted_at' => 'Deleted At',

@@ -61,7 +61,7 @@ class Absensi extends \yii\base\Model
     {
         return [
             'id' => 'ID',
-            'kode_unit_kerja' => 'Kode Unit Kerja',
+            'kode_unit_kerja' => 'Kode Perangkat Daerah',
             'kode_pegawai' => 'Kode Pegawai',
             'waktu_absensi' => 'Waktu Absensi',
             'waktu_dibuat' => 'Waktu Dibuat',

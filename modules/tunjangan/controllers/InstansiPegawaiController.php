@@ -74,7 +74,7 @@ class InstansiPegawaiController extends Controller
 
         if($export_pdf_perhitungan==1) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['/tunjangan/instansi-pegawai/index', 'jenis' => $jenis]);
             }
 
@@ -86,7 +86,7 @@ class InstansiPegawaiController extends Controller
 
         if($export_pdf_pembayaran==1) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['/tunjangan/instansi-pegawai/index', 'jenis' => $jenis]);
             }
 
@@ -98,7 +98,7 @@ class InstansiPegawaiController extends Controller
 
         if($export_pdf_lembar==1) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['/tunjangan/instansi-pegawai/index', 'jenis' => $jenis]);
             }
 
@@ -110,7 +110,7 @@ class InstansiPegawaiController extends Controller
 
         if($export_pdf_pembayaran_14 == 1 OR $export_pdf_pembayaran_13 == 1) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['/tunjangan/instansi-pegawai/index', 'jenis' => $jenis]);
             }
 
@@ -124,7 +124,7 @@ class InstansiPegawaiController extends Controller
 
         if($export_pdf_lembar_14 == 1 OR $export_pdf_lembar_13 == 1) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['/tunjangan/instansi-pegawai/index', 'jenis' => $jenis]);
             }
 
@@ -138,7 +138,7 @@ class InstansiPegawaiController extends Controller
 
         if (Yii::$app->request->get('refresh-ip-asn') !== null) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['/tunjangan/instansi-pegawai/index']);
             }
 
@@ -150,7 +150,7 @@ class InstansiPegawaiController extends Controller
 
         if (Yii::$app->request->get('kirim-dokumen') !== null) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['/tunjangan/instansi-pegawai/index']);
             }
 
@@ -194,7 +194,7 @@ class InstansiPegawaiController extends Controller
     public function actionRefreshRekapPegawaiBulan($id_instansi=null, $bulan=null)
     {
         if ($id_instansi == null) {
-            Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+            Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
             return $this->redirect(Yii::$app->request->referrer);
         }
 
@@ -302,7 +302,7 @@ class InstansiPegawaiController extends Controller
 
         if($export_pdf_perhitungan==1) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['/tunjangan/instansi-pegawai/index']);
             }
 
@@ -311,7 +311,7 @@ class InstansiPegawaiController extends Controller
 
         if($export_pdf_pembayaran==1) {
             if ($searchModel->id_instansi == null) {
-                Yii::$app->session->setFlash('danger', 'Silahkan pilih unit kerja terlebih dahulu');
+                Yii::$app->session->setFlash('danger', 'Silahkan pilih perangkat daerah terlebih dahulu');
                 return $this->redirect(['/tunjangan/instansi-pegawai/index']);
             }
 

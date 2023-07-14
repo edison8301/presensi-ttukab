@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute'=>'nama_instansi',
-                'header' => 'Unit Kerja',
+                'header' => 'Perangkat Daerah',
                 'format' => 'raw',
                 'value'=>function($data) {
                     return @$data->pegawai->getNamaInstansi();

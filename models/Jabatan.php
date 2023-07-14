@@ -142,7 +142,7 @@ class Jabatan extends \yii\db\ActiveRecord
             'nama_2021' => 'Nama Jabatan (2021)',
             'nama_2022' => 'Nama Jabatan (2022)',
             'nama_2023' => 'Nama Jabatan (2023)',
-            'id_instansi' => 'Unit Kerja',
+            'id_instansi' => 'Perangkat Daerah',
             'id_induk' => 'Atasan Jabatan',
             'id_jabatan_jenis' => 'Jenis Jabatan',
             'id_jenis_jabatan' => 'Jenis Jabatan',

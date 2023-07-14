@@ -40,7 +40,7 @@ use app\models\Eselon;
 
         <?= $form->errorSummary($model); ?>
 
-        <?= $form->field($model, 'namaInstansi')->textarea(['rows'=>3,'readonly'=>'readonly'])->label("Unit Kerja") ?>
+        <?= $form->field($model, 'namaInstansi')->textarea(['rows'=>3,'readonly'=>'readonly'])->label("Perangkat Daerah") ?>
 
         <?php if($model->id_pegawai==null) { ?>
             <?= $form->field($model, 'id_pegawai')->widget(Select2::class, [

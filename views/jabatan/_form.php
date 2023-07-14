@@ -53,7 +53,7 @@ $this->registerJs($js, View::POS_READY, 'show-handler');
 
         <?= $form->errorSummary($model) ?>
 
-        <?= $form->field($model, 'namaInstansi')->textarea(['rows'=>3,'readonly'=>'readonly'])->label("Unit Kerja") ?>
+        <?= $form->field($model, 'namaInstansi')->textarea(['rows'=>3,'readonly'=>'readonly'])->label("Perangkat Daerah") ?>
 
         <?php if($model->accessIdInstansiBidang()) { ?>
         <?php echo $form->field($model, 'id_instansi_bidang')->dropDownList(
@@ -131,7 +131,7 @@ $this->registerJs($js, View::POS_READY, 'show-handler');
             ],
         ])->dropDownList(
             ['0'=>'Bukan','1'=>'Ya']
-        )->label('Kepala Unit Kerja') ?>
+        )->label('Kepala Perangkat Daerah') ?>
 
         <?= $form->field($model, 'nilai_jabatan',[
             'horizontalCssClasses' => [

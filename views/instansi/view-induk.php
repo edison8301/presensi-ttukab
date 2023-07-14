@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <table class="table table-bordered">
             <tr>
                 <th style="text-align: center; width:  50px">No</th>
-                <th>Unit Kerja Induk</th>
+                <th>Perangkat Daerah Induk</th>
                 <th>Tanggal Mulai</th>
                 <th>Tanggal Selesai</th>
                 <th></th>

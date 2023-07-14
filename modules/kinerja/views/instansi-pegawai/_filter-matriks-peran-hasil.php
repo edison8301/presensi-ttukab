@@ -29,7 +29,7 @@ use app\models\Instansi;
                 <?= $form->field($searchModel, 'id_instansi')->widget(Select2::className(), [
                     'data' => Instansi::getList(),
                     'options' => [
-                        'placeholder' => '- Pilih Unit Kerja -',
+                        'placeholder' => '- Pilih Perangkat Daerah -',
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,

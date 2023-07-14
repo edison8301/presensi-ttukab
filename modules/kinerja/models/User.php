@@ -85,7 +85,7 @@ class User extends \yii\db\ActiveRecord
             'foto' => 'Foto',
             'nip' => 'NIP',
             'atasan_id' => 'Atasan ID',
-            'unit_kerja' => 'Unit Kerja',
+            'unit_kerja' => 'Perangkat Daerah',
             'jabatan_struktural' => 'Jabatan Struktural',
             'rekan_id' => 'Rekan ID',
             'grade' => 'Grade',

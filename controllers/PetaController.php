@@ -252,12 +252,12 @@ class PetaController extends Controller
 
         $sheet->setCellValue('A3', 'No');
         $sheet->setCellValue('B3', 'Nama');
-        $sheet->setCellValue('C3', $mode == 'instansi' ? 'Unit Kerja' : 'NIP');
+        $sheet->setCellValue('C3', $mode == 'instansi' ? 'Perangkat Daerah' : 'NIP');
         $sheet->setCellValue('D3', 'Latitude');
         $sheet->setCellValue('E3', 'Longitude');
         $sheet->setCellValue('F3', 'Jarak');
 
-        $title = 'Data Peta Unit Kerja';
+        $title = 'Data Peta Perangkat Daerah';
 
         if ($mode == 'pegawai') {
             $title = 'Data Peta Pegawai';

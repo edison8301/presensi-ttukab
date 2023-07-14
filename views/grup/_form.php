@@ -40,7 +40,7 @@ use kartik\select2\Select2;
         <?= $form->field($model, 'id_instansi')->widget(Select2::className(), [
             'data' => Instansi::getList(),
             'options' => [
-                'placeholder' => '- Pilih Unit Kerja -',
+                'placeholder' => '- Pilih Perangkat Daerah -',
             ],
             'pluginOptions' => [
                 'allowClear' => true,

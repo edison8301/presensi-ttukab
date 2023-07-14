@@ -8,7 +8,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PegawaiAbsensiManualSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Daftar Unit Kerja Absensi Manual';
+$this->title = 'Daftar Perangkat Daerah Absensi Manual';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pegawai-absensi-manual-index box box-primary">

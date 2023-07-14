@@ -9,7 +9,7 @@ use kartik\grid\GridView;
 /* @var $searchModel app\models\InstansiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Daftar Rekap Kinerja per Unit Kerja';
+$this->title = 'Daftar Rekap Kinerja per Perangkat Daerah';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

@@ -650,7 +650,7 @@ class Instansi extends \yii\db\ActiveRecord
             return null;
         }
 
-        return Html::a('<i class="fa fa-plus"></i> Tambah Unit Kerja', [
+        return Html::a('<i class="fa fa-plus"></i> Tambah Perangkat Daerah', [
             '/instansi/create'
         ], ['class' => 'btn btn-success btn-flat']);
     }

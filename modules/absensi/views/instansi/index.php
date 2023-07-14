@@ -9,7 +9,7 @@ use app\components\Helper;
 /* @var $searchModel app\models\InstansiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Daftar Unit Kerja : '.$searchModel->getMasa();
+$this->title = 'Daftar Perangkat Daerah : '.$searchModel->getMasa();
 
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="instansi-index box box-primary">
     <div class="box-header">
-        <h3 class="box-title">Daftar Unit Kerja</h3>
+        <h3 class="box-title">Daftar Perangkat Daerah</h3>
     </div>
     <div class="box-body table-responsive">
     <?= GridView::widget([

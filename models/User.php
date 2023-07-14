@@ -417,7 +417,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'id_user_role' => 'Role',
             'id_opd' => 'Opd',
             'id_pegawai' => 'Pegawai',
-            'id_instansi' => 'Unit Kerja',
+            'id_instansi' => 'Perangkat Daerah',
             'id_grup' => 'Grup',
             'username' => 'Username',
             'password' => 'Password',

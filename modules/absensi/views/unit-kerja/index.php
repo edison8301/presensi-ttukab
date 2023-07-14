@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\kinerja\models\UnitKerjaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Daftar Unit Kerja';
+$this->title = 'Daftar Perangkat Daerah';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="unit-kerja-index box box-primary">

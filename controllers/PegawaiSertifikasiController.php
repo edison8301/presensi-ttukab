@@ -223,7 +223,7 @@ class PegawaiSertifikasiController extends Controller
         $sheet->setCellValue('B3', 'Pegawai');
         $sheet->setCellValue('C3', 'NIP');
         $sheet->setCellValue('D3', 'Jenis');
-        $sheet->setCellValue('E3', 'Unit Kerja');
+        $sheet->setCellValue('E3', 'Perangkat Daerah');
         $sheet->setCellValue('F3', 'Tanggal Mulai');
         $sheet->setCellValue('G3', 'Tanggal Selesai');
 

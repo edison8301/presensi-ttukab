@@ -47,7 +47,7 @@ $this->title = "Kirim Pegawai ke Mesin";
         <?= $form->field($model, 'id_instansi')->widget(Select2::className(), [
             'data' => Instansi::getList(),
             'options' => [
-                'placeholder' => '- Pilih Unit Kerja -',
+                'placeholder' => '- Pilih Perangkat Daerah -',
             ],
             'pluginOptions' => [
                 'allowClear' => true,
@@ -108,7 +108,7 @@ $this->title = "Kirim Pegawai ke Mesin";
                     <th style="text-align: center; width: 130px">Kode Presensi</th>
                     <th style="text-align: center">Nama</th>
                     <th style="text-align: center">NIP</th>
-                    <th style="text-align: center">Unit Kerja</th>
+                    <th style="text-align: center">Perangkat Daerah</th>
                     <th style="text-align: center">Jumlah<br>Sidik Jari</th>
                 </tr>
                 <?php $i = 1;

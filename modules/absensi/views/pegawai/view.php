@@ -51,7 +51,7 @@ $date = $pegawaiSearch->getDate();
             ],
             [
                 'attribute' => 'id_instansi',
-                'label' => 'Unit Kerja',
+                'label' => 'Perangkat Daerah',
                 'format' => 'raw',
                 'value' => $pegawai->getNamaInstansi([
                     'bulan'=>$pegawaiSearch->bulan,

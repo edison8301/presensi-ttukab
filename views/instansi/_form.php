@@ -60,9 +60,11 @@ use kartik\select2\Select2;
 
         <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
+        <?php /*
         <?= $form->field($model, 'id_instansi_lokasi')->dropDownList(
             InstansiLokasi::findArrayDropDownList()
         ) ?>
+        */ ?>
 
         <?= $form->field($model, 'status_aktif')->dropDownList([
             1 => 'Aktif',

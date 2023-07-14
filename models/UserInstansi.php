@@ -40,7 +40,7 @@ class UserInstansi extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_user' => 'User',
-            'id_instansi' => 'Unit Kerja',
+            'id_instansi' => 'Perangkat Daerah',
         ];
     }
 

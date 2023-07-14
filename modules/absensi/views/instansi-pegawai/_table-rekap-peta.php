@@ -38,7 +38,7 @@ $colspan = $pegawaiPetaAbsensiForm->date->format('t');
     <?php } ?>
     <?php if ($pegawaiPetaAbsensiForm->id_instansi == null) { ?>
         <tr>
-            <td colspan="<?= $colspan + 2 ?>"><i>Silahkan pilih unit kerja terlebih dahulu</i></td>
+            <td colspan="<?= $colspan + 2 ?>"><i>Silahkan pilih perangkat daerah terlebih dahulu</i></td>
         </tr>
     <?php } ?>
 </table>
