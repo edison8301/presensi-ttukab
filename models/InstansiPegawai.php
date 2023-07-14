@@ -433,6 +433,7 @@ class InstansiPegawai extends ActiveRecord
             $plt .= ' (Plt)';
         }
         if($this->id_jabatan != null) {
+            /*
             if ($this->tanggal_mulai >= '2023-01-01') {
                 return @$this->jabatan->nama_2023.$plt;
             }
@@ -444,6 +445,7 @@ class InstansiPegawai extends ActiveRecord
             if ($this->tanggal_mulai < '2022-01-01') {
                 return @$this->jabatan->nama_2021.$plt;
             }
+            */
 
             return @$this->jabatan->nama.$plt;
         }
@@ -460,6 +462,8 @@ class InstansiPegawai extends ActiveRecord
         $jabatan = $this->jabatanAtasan;
 
         if ($jabatan != null) {
+
+            /*
             if ($this->tanggal_mulai >= '2023-01-01') {
                 return $jabatan->nama_2023;
             }
@@ -471,6 +475,7 @@ class InstansiPegawai extends ActiveRecord
             if ($this->tanggal_mulai < '2022-01-01') {
                 return $jabatan->nama_2021;
             }
+            */
 
             return $jabatan->nama;
         }
@@ -799,7 +804,7 @@ class InstansiPegawai extends ActiveRecord
             // ['LIKE', 'nama', '%kepala sekolah%', false],
             // ['LIKE', 'nama', 'Guru%', false],
             // ['LIKE', 'nama', 'Calon Guru%', false],
-            ['LIKE', 'nama_2023', 'Guru Ahli%', false],
+            ['LIKE', 'nama', 'Guru Ahli%', false],
         ])
         ->select('id')->column();
 

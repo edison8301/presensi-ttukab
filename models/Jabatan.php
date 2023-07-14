@@ -361,6 +361,8 @@ class Jabatan extends \yii\db\ActiveRecord
 
         $nama_jabatan = $this->nama;
 
+        /*
+
         if (Session::getTahun() == 2021) {
             $nama_jabatan = $this->nama_2021;
         }
@@ -372,6 +374,8 @@ class Jabatan extends \yii\db\ActiveRecord
         if (Session::getTahun() == 2023) {
             $nama_jabatan = $this->nama_2023;
         }
+
+        */
 
         return $nama_jabatan . $plt;
     }

@@ -62,15 +62,15 @@ $this->registerJs($js, View::POS_READY, 'show-handler');
         ) ?>
         <?php } ?>
 
-        <?php /*
         <?= $form->field($model, 'nama')->textArea(['rows' => 3]) ?>
-        */ ?>
 
+        <?php /*
         <?= $form->field($model, 'nama_2021')->textArea(['rows' => 3]) ?>
 
         <?= $form->field($model, 'nama_2022')->textArea(['rows' => 3]) ?>
 
         <?= $form->field($model, 'nama_2023')->textArea(['rows' => 3]) ?>
+        */ ?>
 
         <?= $form->field($model, 'nilai_jabatan')->textInput() ?>
 
