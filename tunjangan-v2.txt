@@ -1,0 +1,5 @@
+1. Pada instansi_pegawai, tambah kolom tanggal_mulai dan tanggal_selesai
+2. Impor tabel instansi_pegawai_skp struktur saja
+3. Pada cli, ekseksui php yii instansi-pegawai/update-all-tanggal-mulai
+4. Pada cli, ekseksui php yii instansi-pegawai/update-all-tanggal-selesai
+5. Pada cli, ekseksui php yii pegawai/refresh-instansi-pegawai-skp

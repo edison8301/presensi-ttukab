@@ -1,0 +1,82 @@
+<?php
+
+use app\components\Helper;
+use app\models\PegawaiTugasBelajar;
+use yii\helpers\Html;
+use yii\grid\GridView;
+
+/* @var $this yii\web\View */
+/* @var $searchModel app\models\PegawaiTugasBelajarSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Daftar Pegawai Tugas Belajar';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="pegawai-tugas-belajar-index box box-primary">
+
+    <div class="box-header">
+        <?= Html::a('<i class="fa fa-plus"></i> Tambah Data', ['create'], ['class' => 'btn btn-success btn-flat']) ?>
+    </div>
+
+    <div class="box-body">
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'columns' => [
+                [
+                    'class' => 'yii\grid\SerialColumn',
+                    'header' => 'No',
+                    'headerOptions' => ['style' => 'text-align:center;width:10px;'],
+                    'contentOptions' => ['style' => 'text-align:center']
+                ],
+                [
+                    'attribute' => 'nama_pegawai',
+                    'label' => 'Pegawai',
+                    'format' => 'raw',
+                    'value' => function (PegawaiTugasBelajar $data) {
+                        return @$data->pegawai->nama;
+                    },
+                    'headerOptions' => ['style' => 'text-align:center;'],
+                    'contentOptions' => ['style' => 'text-align:left;'],
+                ],
+                [
+                    'attribute' => 'semester',
+                    'format' => 'raw',
+                    'value' => function (PegawaiTugasBelajar $data) {
+                        return $data->getLabelSemester();
+                    },
+                    'headerOptions' => ['style' => 'text-align:center;width:50px;'],
+                    'contentOptions' => ['style' => 'text-align:center;'],
+                ],
+                [
+                    'attribute' => 'indeks_prestasi',
+                    'format' => 'raw',
+                    'headerOptions' => ['style' => 'text-align:center;width:50px;'],
+                    'contentOptions' => ['style' => 'text-align:center;'],
+                ],
+                [
+                    'attribute' => 'tanggal_mulai',
+                    'format' => 'raw',
+                    'value' => function (PegawaiTugasBelajar $data) {
+                        return Helper::getTanggal($data->tanggal_mulai);
+                    },
+                    'headerOptions' => ['style' => 'text-align:center;width:150px;'],
+                    'contentOptions' => ['style' => 'text-align:center;'],
+                ],
+                [
+                    'attribute' => 'tanggal_selesai',
+                    'format' => 'raw',
+                    'value' => function (PegawaiTugasBelajar $data) {
+                        return Helper::getTanggal($data->tanggal_selesai);
+                    },
+                    'headerOptions' => ['style' => 'text-align:center;width:150px;'],
+                    'contentOptions' => ['style' => 'text-align:center;'],
+                ],
+                [
+                    'class' => 'yii\grid\ActionColumn',
+                    'contentOptions' => ['style' => 'text-align:center;width:80px']
+                ],
+            ],
+        ]); ?>
+    </div>
+</div>

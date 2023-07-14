@@ -1,0 +1,50 @@
+.login-page {
+  background-image: url(../images/bg-tukin.jpg) !important;
+  background-position: center center !important;
+  background-repeat:  no-repeat !important;
+  background-attachment: fixed !important;
+  background-size:  cover !important;
+}
+
+.register-box {
+  width: 55% !important;
+  margin: 7% auto;
+    margin-bottom: 0px;
+}
+
+.register-box, .login-box {
+  background-color: #d2d6de73;
+  border-radius: 10px;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+    padding-top: 10px !important;
+
+}
+.register-box, .login-box {
+  background-color: #3d3e3947;
+  border-radius: 10px;
+}
+
+.login-logo, .register-logo {
+  /*font-size: 35px;*/
+  text-align: center;
+  margin-bottom: 0%;
+  font-weight: 300;
+}
+
+.login-box-body, .register-box-body {
+  background: #ffffff;
+  padding: 20px;
+  border-top: 0;
+  color: #000;
+}
+
+.login-box-msg, .register-box-msg {
+  margin: 0;
+  text-align: center;
+  padding: 0 20px 20px 20px;
+}
+
+.register-logo a {
+  color: #fff !important;
+}

@@ -1,0 +1,94 @@
+{
+    "name": "yiisoft/yii2-app-basic",
+    "description": "Yii 2 Basic Project Template",
+    "keywords": ["yii2", "framework", "basic", "project template"],
+    "homepage": "http://www.yiiframework.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "prefer-stable": true,
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1.0",
+        "2amigos/yii2-date-time-picker-widget": "~1.0",
+        "kartik-v/yii2-detail-view": "*",
+        "kartik-v/yii2-editable": "*",
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-mpdf": "*",
+        "kartik-v/yii2-widget-activeform": "@dev",
+        "kartik-v/yii2-widget-datepicker": "^1.4",
+        "kartik-v/yii2-widget-depdrop": "@dev",
+        "kartik-v/yii2-widget-select2": "^2.0",
+        "kartik-v/yii2-widget-timepicker": "*",
+        "miloschuman/yii2-highcharts-widget": "dev-master",
+        "phpoffice/phpexcel": "^1.8",
+        "phpoffice/phpword": "^0.13.0",
+        "vilochane/yii2-barcode-generator": "dev-master",
+        "yii2mod/yii2-array-query": "*",
+        "yii2tech/ar-softdelete": "^1.0",
+        "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-jui": "^2.0",
+        "yiisoft/yii2-queue": "^2.0@dev",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "phpoffice/phpspreadsheet": "^1.4",
+        "dmstr/yii2-adminlte-asset": "^2.6",
+        "yiisoft/yii2-httpclient": "^2.0",
+        "yii2tech/ar-position": "^1.0",
+        "kartik-v/yii2-money": "dev-master",
+        "kartik-v/yii2-number": "^1.0",
+        "sizeg/yii2-jwt": "^2.0",
+        "giannisdag/yii2-check-login-attempts": "^1.1",
+        "kartik-v/yii2-password": "^1.5",
+        "yiisoft/yii2-imagine": "^2.3",
+        "mjaschen/phpgeo": "^3.2",
+        "2amigos/yii2-ckeditor-widget": "^2.2",
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "kartik-v/yii2-widget-datetimepicker": "dev-master",
+        "2amigos/qrcode-library": "~1.1",
+        "omnilight/yii2-scheduling": "*",
+        "2amigos/yii2-chartjs-widget": "*"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
+    },
+	"repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "yii": "0755"
+                }
+            ],
+            "generateCookieValidationKey": [
+                "config/web.php"
+            ]
+        }
+    }
+}

@@ -1,0 +1,42 @@
+/* BACKEND */
+
+.table th {
+    text-transform: uppercase;
+    background: #F2F5F9;
+}
+
+.table th,
+.table td {
+    border: 1px solid #DDDDDD !important;
+}
+
+.table th > a {
+	color: #212121;
+}
+
+.content-wrapper {
+    background: url('images/bg.png');
+    background-size:100px;
+}
+
+.sidebar .sidebar-menu > li > a {
+    color: #ffffff;
+}
+
+/*
+.content-header > h1 {
+    color: #3c85c9;
+    text-transform: uppercase;
+    font-size: 2em !important;
+}
+*/
+
+.box-header .btn-group {
+    vertical-align: top;
+}
+
+.box-header h3.box-title {
+    font-size:20px;
+    margin-left: 7px;
+}
+
