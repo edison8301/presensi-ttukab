@@ -177,8 +177,8 @@ if(Yii::$app->params['mode']=='tukin') {
             ['label' => 'Peta', 'icon' => 'map-marker', 'items' => [
                 ['label' => 'Perangkat Daerah', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'instansi']],
                 ['label' => 'Pegawai', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'pegawai']],
-                ['label' => 'Pegawai (Rumah/WFH)', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'pegawai-wfh']],
-                ['label' => 'Khusus', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'khusus']],
+                // ['label' => 'Pegawai (Rumah/WFH)', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'pegawai-wfh']],
+                // ['label' => 'Khusus', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'khusus']],
             ]],
             ['label' => 'Perangkat Daerah', 'icon' => 'building', 'items'=>[
                 ['label'=>'Perangkat Daerah','url' => ['/instansi/index']],
