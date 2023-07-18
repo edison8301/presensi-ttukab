@@ -2,6 +2,9 @@
 
 namespace app\controllers;
 
+use app\components\Helper;
+use app\models\Instansi;
+use app\models\InstansiSearch;
 use Yii;
 use app\models\Kegiatan;
 use app\models\KegiatanSearch;
@@ -10,6 +13,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use app\models\User;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use yii\data\Pagination;
 
 /**
  * KegiatanController implements the CRUD actions for Kegiatan model.
@@ -26,7 +32,10 @@ class KegiatanController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'actions' => [
+                            'index', 'view', 'create', 'update', 'delete',
+                            'export-excel-rekap',
+                        ],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -53,7 +62,7 @@ class KegiatanController extends Controller
         $searchModel = new KegiatanSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        if(Yii::$app->request->get('export')) {
+        if (Yii::$app->request->get('export')) {
             return $this->exportExcel(Yii::$app->request->queryParams);
         }
 
@@ -70,8 +79,16 @@ class KegiatanController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+
+        $searchModel = new InstansiSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination->pageSize = 10;
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -246,6 +263,86 @@ class KegiatanController extends Controller
         $objWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, 'Excel2007');
         $objWriter->save($path.$filename);
         return Yii::$app->getResponse()->redirect($path.$filename);
+    }
+
+    public function actionExportExcelRekap($id, $id_instansi)
+    {
+        $model = $this->findModel($id);
+        $instansi = Instansi::findOne($id_instansi);
+
+        $spreadsheet = new Spreadsheet();
+        $spreadsheet->setActiveSheetIndex(0);
+
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $spreadsheet->getDefaultStyle()->getAlignment()->setWrapText(true);
+        $spreadsheet->getDefaultStyle()->getAlignment()->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);
+
+        $setBorderArray = array(
+            'borders' => array(
+                'allborders' => array(
+                    'style' => \PHPExcel_Style_Border::BORDER_THIN
+                )
+            )
+        );
+
+        $sheet->getColumnDimension('A')->setWidth(5);
+        $sheet->getColumnDimension('B')->setWidth(30);
+        $sheet->getColumnDimension('C')->setWidth(30);
+        $sheet->getColumnDimension('D')->setWidth(20);
+
+        $sheet->setCellValue('A1', 'DATA KEHADIRAN');
+
+        $sheet->mergeCells('A1:D1');
+
+        $sheet->getStyle('A1:D1')->getFont()->setBold(true);
+        $sheet->getStyle('A1:D1')->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+        $sheet->setCellValue('A3', 'Perangkat Daerah : ' . $instansi->nama);
+        $sheet->setCellValue('A4', 'Kegiatan : ' . $model->nama);
+        $sheet->setCellValue('A5', 'Tanggal : ' . Helper::getTanggal($model->tanggal));
+
+        $sheet->mergeCells('A3:D3');
+        $sheet->mergeCells('A4:D4');
+        $sheet->mergeCells('A5:D5');
+
+        $sheet->setCellValue('A7', 'NO');
+        $sheet->setCellValue('B7', 'NAMA');
+        $sheet->setCellValue('C7', 'NIP');
+        $sheet->setCellValue('D7', 'STATUS');
+
+        $sheet->getStyle('A7:D7')->getFont()->setBold(true);
+        $sheet->getStyle('A7:D7')->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+        $query = $instansi->getManyInstansiPegawai();
+        $query->berlaku($model->tanggal);
+        $query->groupBy('id_pegawai');
+
+        $allInstansiPegawai = $query->all();
+
+        $row = 8;
+        $i=1;
+
+        foreach ($allInstansiPegawai as $instansiPegawai) {
+            $sheet->setCellValue("A$row", $i++);
+            $sheet->setCellValue("B$row", @$instansiPegawai->pegawai->nama);
+            $sheet->setCellValue("C$row", @$instansiPegawai->pegawai->nip);
+            $sheet->setCellValue("D$row", $model->getStatusHadirPegawai([
+                'id_pegawai' => $instansiPegawai->id_pegawai,
+            ]));
+        }
+
+        $sheet->getStyle("A8:A$row:")->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("C8:D$row:")->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+        $path = Yii::getAlias('@app/files/');
+        $filename = time() . '_DATA_KEHADIRAN.xlsx';
+
+        ob_end_clean();
+        $writer = new Xlsx($spreadsheet);
+        $writer->save($path . $filename);
+
+        return $this->redirect(['file/get', 'fileName' => $filename]);
     }
 
 }

@@ -51,7 +51,7 @@ class Kegiatan extends \yii\db\ActiveRecord
         ];
     }
 
-    public function findAllPegawai()
+    public function findAllPegawaiChecktime()
     {
         $queryCheckinout = Checkinout::find();
         $queryCheckinout->joinWith('userinfo');
@@ -66,5 +66,36 @@ class Kegiatan extends \yii\db\ActiveRecord
         $query->andWhere(['nip' => $arrayBadgenumber]);
 
         return $query->all();
+    }
+
+    public function getAllChecktimePegawai(array $params = [])
+    {
+        $id_pegawai = $params['id_pegawai'];
+        $pegawai = Pegawai::findOne($id_pegawai);
+
+        $query = $pegawai->getManyCheckinout();
+        $query->andWhere('checktime >= :tanggal_awal AND checktime <= :tanggal_akhir', [
+            ':tanggal_awal' => $this->tanggal . ' ' . $this->jam_mulai_absen,
+            ':tanggal_akhir' => $this->tanggal . ' ' . $this->jam_selesai_absen,
+        ]);
+
+        $checktime = [];
+
+        foreach ($query->all() as $checkinout) {
+            $checktime[] = $checkinout->checktime;
+        }
+
+        return $checktime;
+    }
+
+    public function getStatusHadirPegawai(array $params = [])
+    {
+        $allChecktimePegawai = $this->getAllChecktimePegawai($params);
+
+        if (count($allChecktimePegawai) == 0) {
+            return 'Tidak Hadir';
+        }
+
+        return 'Hadir';
     }
 }

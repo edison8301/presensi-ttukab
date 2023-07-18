@@ -1007,4 +1007,39 @@ class Instansi extends \yii\db\ActiveRecord
 
         return null;
     }
+
+    public function getJumlahPegawai(array $params = [])
+    {
+        $tanggal = @$params['tanggal'];
+
+        $query = $this->getManyInstansiPegawai();
+        $query->berlaku($tanggal);
+        $query->groupBy('id_pegawai');
+
+        return $query->count();
+    }
+
+    public function getJumlahPegawaiHadirKegiatan(array $params = [])
+    {
+        $id_kegiatan = @$params['id_kegiatan'];
+
+        $kegiatan = Kegiatan::findOne($id_kegiatan);
+
+        $queryCheckinout = \app\modules\iclock\models\Checkinout::find();
+        $queryCheckinout->joinWith('userinfo');
+        $queryCheckinout->andWhere('checktime >= :tanggal_awal AND checktime <= :tanggal_akhir', [
+            ':tanggal_awal' => $kegiatan->tanggal . ' ' . $kegiatan->jam_mulai_absen,
+            ':tanggal_akhir' => $kegiatan->tanggal . ' ' . $kegiatan->jam_selesai_absen,
+        ]);
+
+        $arrayBadgenumber = $queryCheckinout->select('userinfo.badgenumber')->column();
+
+        $query = $this->getManyInstansiPegawai();
+        $query->joinWith(['pegawai']);
+        $query->andWhere(['pegawai.nip' => $arrayBadgenumber]);
+        $query->berlaku($kegiatan->tanggal);
+        $query->groupBy('id_pegawai');
+
+        return $query->count();
+    }
 }

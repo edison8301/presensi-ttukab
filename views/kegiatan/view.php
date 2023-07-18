@@ -1,7 +1,9 @@
 <?php
 
+use app\components\Helper;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Kegiatan */
@@ -56,18 +58,26 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="kegiatan-view box box-primary">
 
-    <div class="box-header">
+    <div class="box-header with-border">
         <h3 class="box-title">Daftar Kehadiran</h3>
     </div>
 
     <div class="box-body">
+
+        <?= $this->render('_grid-instansi', [
+            'kegiatan' => $model,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]) ?>
+
+        <?php /*
         <table class="table table-bordered">
             <tr>
                 <th style="text-align: center; width: 50px;">No</th>
                 <th style="width: 350px;">Nama / NIP</th>
                 <th style="text-align: left;">Waktu Absen</th>
             </tr>
-            <?php $no=1; foreach ($model->findAllPegawai() as $pegawai) { ?>
+            <?php $no=1; foreach ($model->findAllPegawaiChecktime() as $pegawai) { ?>
             <tr>
                 <td style="text-align: center;">
                     <?= $no++; ?>
@@ -84,6 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
         <?php } ?>
         </table>
+        */ ?>
     </div>
 
 </div>
