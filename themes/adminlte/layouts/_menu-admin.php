@@ -16,7 +16,8 @@ if(Yii::$app->params['mode']=='tukin') {
         'options' => ['class' => 'sidebar-menu', 'data-widget' => 'tree'],
         'items' => [
             ['label' => 'ABSENSI', 'options' => ['class' => 'header']],
-            ['label' => 'Dashboard', 'icon' => 'dashboard', 'url' => ['/absensi/dasbor/index']],
+            ['label' => 'Kegiatan', 'icon' => 'folder', 'url' => ['/kegiatan/index']],
+            /*
             ['label' => 'Perangkat Daerah', 'icon' => 'bank', 'items' => [
                 ['label' => 'Aktivitas Absensi', 'url' => ['/absensi/instansi/index']],
                 ['label' => 'Rekap Absensi', 'url' => ['/absensi/instansi-rekap-absensi/index']],
@@ -34,12 +35,14 @@ if(Yii::$app->params['mode']=='tukin') {
                 ['label' => 'Cek Dobel Rekap', 'url' => ['/absensi/pegawai-rekap-absensi/index']],
                 ['label' => 'Rekap Abensi Peta', 'url' => ['/absensi/instansi-pegawai/index-rekap-peta']],
             ]],
+            */
             /*
             ['label' => 'Absensi Manual', 'icon' => 'book', 'items' => [
                 ['label' => 'Perangkat Daerah', 'icon' => 'circle-o', 'url' => ['/absensi/instansi-absensi-manual/index', 'mode' => 2]],
                 ['label' => 'Pegawai', 'icon' => 'circle-o', 'url' => ['/absensi/pegawai-absensi-manual/index']],
             ]],
             */
+            /*
             ['label' => 'Monitoring', 'icon' => 'desktop', 'items' => [
                 ['label' => 'Izin', 'url' => ['/absensi/pegawai-rekap-absensi/izin']],
                 ['label' => 'Sakit', 'url' => ['/absensi/pegawai-rekap-absensi/sakit']],
@@ -81,7 +84,6 @@ if(Yii::$app->params['mode']=='tukin') {
                 ['label' => 'Pegawai Tanpa Checkinout', 'icon' => 'circle-o', 'url' => ['/absensi/perawatan/pegawai-tanpa-checkinout']],
                 ['label' => 'Pegawai Tanpa Template', 'icon' => 'circle-o', 'url' => ['/absensi/perawatan/pegawai-tanpa-template']],
             ]],
-            /*
             ['label' => 'KINERJA PP 46/2011', 'options' => ['class' => 'header']],
             ['label' => 'Dashboard', 'icon' => 'dashboard', 'url' => ['/kinerja/pegawai/index']],
             ['label' => 'Pegawai', 'icon' => 'user', 'url' => ['/kinerja/instansi-pegawai/index']],
@@ -171,9 +173,12 @@ if(Yii::$app->params['mode']=='tukin') {
             ]],
             */
             ['label' => 'MENU SISTEM', 'options' => ['class' => 'header']],
+            ['label' => 'Perangkat Daerah', 'icon' => 'building', 'url' => ['/instansi/index']],
+            /*
             ['label' => 'Berita', 'icon' => 'newspaper-o', 'url' => ['/artikel/index']],
             ['label' => 'Pengumuman', 'icon' => 'bullhorn', 'url' => ['/pengumuman/index']],
             ['label' => 'Pengaturan', 'icon' => 'wrench', 'url' => ['/pengaturan/index']],
+            */
             ['label' => 'Peta', 'icon' => 'map-marker', 'items' => [
                 ['label' => 'Perangkat Daerah', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'instansi']],
                 ['label' => 'Pegawai', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'pegawai']],
@@ -181,33 +186,24 @@ if(Yii::$app->params['mode']=='tukin') {
                 // ['label' => 'Pegawai (Rumah/WFH)', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'pegawai-wfh']],
                 // ['label' => 'Khusus', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'khusus']],
             ]],
+            /*
             ['label' => 'Perangkat Daerah', 'icon' => 'building', 'items'=>[
                 ['label'=>'Perangkat Daerah','url' => ['/instansi/index']],
                 ['label'=>'Bidang','url' => ['/instansi-bidang/index']],
                 ['label'=>'Lokasi','url' => ['/instansi/index-lokasi']],
                 ['label'=>'Induk','url' => ['/instansi/index-induk']],
             ]],
-            ['label' => 'Pegawai', 'icon' => 'list', 'items' => [
-                ['label' => 'Pegawai', 'icon' => 'user', 'url' => ['/pegawai/index']],
-                /*
-                ['label' => 'Pegawai Sertifikasi', 'icon' => 'graduation-cap','url' => ['/pegawai-sertifikasi/index']],
-                ['label' => 'Pegawai Penghargaan', 'icon' => 'trophy','url' => ['/pegawai-penghargaan/index']],
-                ['label' => 'Pegawai Cuti Ibadah', 'icon' => 'calendar','url' => ['/pegawai-cuti-ibadah/index']],
-                ['label' => 'Pegawai Tugas Belajar', 'icon' => 'book','url' => ['/pegawai-tugas-belajar/index']],
-                ['label' => 'Pegawai Penundaan TPP', 'icon' => 'clock-o','url' => ['/pegawai-tunda-bayar/index']],
-                ['label' => 'Pegawai Seragam Dinas', 'icon' => 'gavel','url' => ['/pegawai-atribut/index']],
-                ['label' => 'Pegawai Cuti Besar Non TPP', 'icon' => 'users','url' => ['/pegawai-non-tpp/index', 'id_pegawai_non_tpp_jenis' => PegawaiNonTppJenis::CUTI_BESAR]],
-                ['label' => 'Pegawai Tubel Non TPP', 'icon' => 'users','url' => ['/pegawai-non-tpp/index', 'id_pegawai_non_tpp_jenis' => PegawaiNonTppJenis::TUGAS_BELAJAR]],
-                */
-            ]],
-            ['label' => 'Grup Pegawai', 'icon' => 'users', 'url' => ['/grup/index']],
+            */
+            ['label' => 'Pegawai', 'icon' => 'user', 'url' => ['/pegawai/index']],
+            /*
             ['label' => 'Jabatan', 'icon' => 'star', 'items'=>[
                 ['label' => 'Jabatan', 'url' => ['/jabatan/index']],
                 ['label' => 'Besar TPP', 'url' => ['/jabatan/index-tpp']],
                 ['label' => 'Hasil Evjab', 'url' => ['/jabatan-evjab/index']],
             ]],
+            */
             ['label' => 'Mutasi dan Promosi', 'icon' => 'refresh', 'url' => ['/instansi-pegawai/index']],
-            ['label' => 'Golongan Pegawai', 'icon' => 'refresh', 'url' => ['/pegawai-golongan/index']],
+            /*['label' => 'Golongan Pegawai', 'icon' => 'refresh', 'url' => ['/pegawai-golongan/index']],*/
             ['label' => 'User', 'icon' => 'user', 'items' => [
                 ['label' => 'Admin', 'url' => ['/user/index', 'id_user_role' => UserRole::ADMIN]],
                 ['label' => 'Pegawai', 'url' => ['/user/index', 'id_user_role' => UserRole::PEGAWAI]],

@@ -3,6 +3,7 @@
 namespace app\modules\iclock\models;
 
 use app\models\InstansiPegawai;
+use app\models\Kegiatan;
 use app\models\Peta;
 use Location\Coordinate;
 use Location\Polygon;
@@ -261,6 +262,19 @@ class Checkinout extends \yii\db\ActiveRecord
         $allPeta = $query->all();
 
         return $allPeta;
+    }
+
+    public function getAllKegiatan()
+    {
+        $datetime = \DateTime::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'));
+
+        $query = Kegiatan::find();
+        $query->andWhere(['tanggal' => $datetime->format('Y-m-d')]);
+        $query->andWhere(':jam_absen >= :jam_mulai_absen AND :jam_absen <= :jam_selesai_absen', [
+            ':jam_absen' => date('H:i:s'),
+        ]);
+
+        return $query->all();
     }
 
     public function setStatusLokasiKantorBanyak()
