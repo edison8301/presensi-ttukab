@@ -54,17 +54,13 @@ class Kegiatan extends \yii\db\ActiveRecord
     public function findAllPegawai()
     {
         $queryCheckinout = Checkinout::find();
+        $queryCheckinout->joinWith('userinfo');
         $queryCheckinout->andWhere('checktime >= :tanggal_awal AND checktime <= :tanggal_akhir', [
             ':tanggal_awal' => $this->tanggal . ' ' . $this->jam_mulai_absen,
             ':tanggal_akhir' => $this->tanggal . ' ' . $this->jam_selesai_absen,
         ]);
 
-        $arrayUserid = $queryCheckinout->select('userid')->column();
-
-        $queryUserinfo = Userinfo::find();
-        $queryUserinfo->andWhere(['userinfo' => $arrayUserid]);
-
-        $arrayBadgenumber = [];
+        $arrayBadgenumber = $queryCheckinout->select('userinfo.badgenumber')->column();
 
         $query = Pegawai::find();
         $query->andWhere(['nip' => $arrayBadgenumber]);

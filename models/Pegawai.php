@@ -5438,4 +5438,28 @@ class Pegawai extends \yii\db\ActiveRecord
 
         return false;
     }
+
+    public function getChecktimeKegiatan(array $params)
+    {
+        $id_kegiatan = $params['id_kegiatan'];
+
+        $kegiatan = Kegiatan::findOne($id_kegiatan);
+
+        $query = Checkinout::find();
+        $query->joinWith('userinfo');
+        $query->andWhere('checktime >= :tanggal_awal AND checktime <= :tanggal_akhir', [
+            ':tanggal_awal' => $kegiatan->tanggal . ' ' . $kegiatan->jam_mulai_absen,
+            ':tanggal_akhir' => $kegiatan->tanggal . ' ' . $kegiatan->jam_selesai_absen,
+        ]);
+
+        $string = null;
+
+        foreach ($query->all() as $checkinout) {
+            $string .= $checkinout->checktime . ', ';
+        }
+
+        $string = substr($string, 0, -2);
+
+        return $string;
+    }
 }

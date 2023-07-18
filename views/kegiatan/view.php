@@ -64,17 +64,22 @@ $this->params['breadcrumbs'][] = $this->title;
         <table class="table table-bordered">
             <tr>
                 <th style="text-align: center; width: 50px;">No</th>
-                <th>Nama</th>
-                <th style="text-align: center; width: 200px;">Waktu Absen</th>
+                <th style="width: 350px;">Nama / NIP</th>
+                <th style="text-align: left;">Waktu Absen</th>
             </tr>
-            <?php $no=1; foreach ($model->findAllPegawai() as $checkinout) { ?>
+            <?php $no=1; foreach ($model->findAllPegawai() as $pegawai) { ?>
             <tr>
                 <td style="text-align: center;">
                     <?= $no++; ?>
                 </td>
-                <td></td>
-                <td style="text-align: center;">
-                    <?php // $checkinout->checktime ?>
+                <td>
+                    <?= $pegawai->nama ?><br/>
+                    NIP. <?= $pegawai->nip ?>
+                </td>
+                <td style="text-align: left;">
+                    <?= $pegawai->getChecktimeKegiatan([
+                        'id_kegiatan' => $model->id,
+                    ]) ?>
                 </td>
             </tr>
         <?php } ?>

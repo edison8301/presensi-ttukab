@@ -26,8 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\SerialColumn',
                 'header' => 'No',
-                'headerOptions' => ['style' => 'text-align:center'],
-                'contentOptions' => ['style' => 'text-align:center;width:50px;']
+                'headerOptions' => ['style' => 'text-align:center;width:50px;'],
+                'contentOptions' => ['style' => 'text-align:center;']
             ],
             [
                 'attribute' => 'nama',
