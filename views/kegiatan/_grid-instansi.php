@@ -81,13 +81,17 @@ use yii\helpers\Html;
             'format'=>'raw',
             'encodeLabel' => false,
             'value' => function (Instansi $data) use ($kegiatan) {
-                return Html::a('<i class="fa fa-file-excel-o"></i> Export', [
-                    '/kegiatan/export-excel-rekap',
-                    'id' => $kegiatan->id,
-                    'id_instansi' => $data->id
-                ], ['class' => 'btn btn-success btn-flat btn-xs']);
+                $btn = null;
+                $btn .= $kegiatan->getLinkExportExcelButton([
+                    'id_instansi' => $data->id,
+                ]);
+                $btn .= ' ' . $kegiatan->getLinkExporPdfButton([
+                    'id_instansi' => $data->id,
+                ]);
+
+                return $btn;
             },
-            'headerOptions'=>['style'=>'text-align:center;width:80px;'],
+            'headerOptions'=>['style'=>'text-align:center;width:130px;'],
             'contentOptions'=>['style'=>'text-align:center;'],
         ],
     ],

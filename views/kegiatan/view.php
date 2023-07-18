@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="kegiatan-view box box-primary">
 
     <div class="box-header with-border">
-        <h3 class="box-title">Daftar Kehadiran</h3>
+        <h3 class="box-title">Rekap Kehadiran</h3>
     </div>
 
     <div class="box-body">

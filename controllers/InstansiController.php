@@ -46,7 +46,7 @@ class InstansiController extends Controller
                 'class' => \yii\filters\AccessControl::class,
                 'rules' => [
                     [
-                        'actions'=>['create','update','delete','set-session'],
+                        'actions'=>['create','update','delete','set-session', 'index-kegiatan', 'view-kegiatan'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function() { return User::isAdmin(); }
@@ -169,6 +169,21 @@ class InstansiController extends Controller
     }
 
     /**
+     * Lists all Instansi models.
+     * @return mixed
+     */
+    public function actionIndexKegiatan()
+    {
+        $searchModel = new InstansiSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index-kegiatan', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
      * Displays a single Instansi model.
      * @param integer $id
      * @return mixed
@@ -274,6 +289,15 @@ class InstansiController extends Controller
         return $this->render('view-rekap-kinerja', [
             'model' => $model,
             'bulan' => $bulan,
+        ]);
+    }
+
+    public function actionViewKegiatan($id)
+    {
+        $model = $this->findModel($id);
+
+        return $this->render('view-kegiatan', [
+            'model' => $model,
         ]);
     }
 

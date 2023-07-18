@@ -5,6 +5,7 @@ namespace app\models;
 use app\modules\iclock\models\Checkinout;
 use app\modules\iclock\models\Userinfo;
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "kegiatan".
@@ -97,5 +98,23 @@ class Kegiatan extends \yii\db\ActiveRecord
         }
 
         return 'Hadir';
+    }
+
+    public function getLinkExportExcelButton(array $params = [])
+    {
+        return Html::a('<i class="fa fa-file-excel-o"></i> Excel', [
+            '/kegiatan/export-excel-rekap',
+            'id' => $this->id,
+            'id_instansi' => @$params['id_instansi']
+        ], ['class' => 'btn btn-success btn-flat btn-xs']);
+    }
+
+    public function getLinkExporPdfButton(array $params = [])
+    {
+        return Html::a('<i class="fa fa-file-pdf-o"></i> PDF', [
+            '/kegiatan/export-pdf-rekap',
+            'id' => $this->id,
+            'id_instansi' => @$params['id_instansi']
+        ], ['class' => 'btn btn-primary btn-flat btn-xs', 'target' => '_blank']);
     }
 }

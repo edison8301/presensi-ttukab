@@ -13,6 +13,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use app\models\User;
+use kartik\mpdf\Pdf;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use yii\data\Pagination;
@@ -34,7 +35,7 @@ class KegiatanController extends Controller
                     [
                         'actions' => [
                             'index', 'view', 'create', 'update', 'delete',
-                            'export-excel-rekap',
+                            'export-excel-rekap', 'export-pdf-rekap',
                         ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -344,6 +345,68 @@ class KegiatanController extends Controller
         $writer->save($path . $filename);
 
         return $this->redirect(['file/get', 'fileName' => $filename]);
+    }
+
+    public function actionExportPdfRekap($id, $id_instansi)
+    {
+        $cssInline = <<<CSS
+        table {
+            border-spacing: 0;
+            padding: 7px;
+            font-size: 14px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .table th, .table td {
+            padding: 5px;
+        }
+CSS;
+
+        $model = $this->findModel($id);
+        $instansi = Instansi::findOne($id_instansi);
+
+        $query = $instansi->getManyInstansiPegawai();
+        $query->berlaku($model->tanggal);
+        $query->groupBy('id_pegawai');
+
+        $allInstansiPegawai = $query->all();
+
+        $content = $this->renderPartial('export-pdf-rekap', [
+            'model' => $model,
+            'instansi' => $instansi,
+            'allInstansiPegawai' => $allInstansiPegawai,
+        ]);
+
+        // setup kartik\mpdf\Pdf component
+        $pdf = new Pdf([
+            // set to use core fonts only
+            'mode' => Pdf::MODE_UTF8,
+            // A4 paper format
+            'format' => Pdf::FORMAT_A4,
+            //'format' => [215.9, 330],
+            //'defaultFontSize' => '5',
+            // portrait orientation
+            'orientation' => Pdf::ORIENT_PORTRAIT,
+            // stream to browser inline
+            'destination' => Pdf::DEST_BROWSER,
+            // your html content input
+            'content' => $content,
+            // format content from your own css file if needed or use the
+            // enhanced bootstrap css built by Krajee for mPDF formatting
+            //'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+            // any css to be embedded if required
+            //'cssInline' => '.kv-heading-1{font-size:18px}',
+            // set mPDF properties on the fly
+            'options' => ['title' => 'Export PDF Perhitungan'],
+            'cssInline' => $cssInline,
+        ]);
+
+        return $pdf->render();
     }
 
 }
