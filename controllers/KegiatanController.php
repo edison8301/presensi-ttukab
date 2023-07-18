@@ -330,6 +330,7 @@ class KegiatanController extends Controller
             $sheet->setCellValue("D$row", $model->getStatusHadirPegawai([
                 'id_pegawai' => $instansiPegawai->id_pegawai,
             ]));
+            $row++;
         }
 
         $sheet->getStyle("A8:A$row:")->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
