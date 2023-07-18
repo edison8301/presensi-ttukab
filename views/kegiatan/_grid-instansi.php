@@ -27,6 +27,7 @@ use yii\helpers\Html;
         [
             'attribute'=>'nama',
             'format'=>'raw',
+            'label' => 'Perangkat Daerah',
             'headerOptions'=>['style'=>'text-align:center;'],
             'contentOptions'=>['style'=>'text-align:left;'],
         ],
