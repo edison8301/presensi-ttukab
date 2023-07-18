@@ -76,7 +76,7 @@ class PetaSearch extends Peta
             $query->andWhere('peta.id_pegawai is not null');
         }
 
-        if ($this->mode == 'khusus') {
+        if ($this->mode == 'kegiatan') {
             $query->andWhere('peta.id_instansi is null AND peta.id_pegawai is null');
         }
 

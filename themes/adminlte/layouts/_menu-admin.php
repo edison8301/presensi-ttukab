@@ -177,6 +177,7 @@ if(Yii::$app->params['mode']=='tukin') {
             ['label' => 'Peta', 'icon' => 'map-marker', 'items' => [
                 ['label' => 'Perangkat Daerah', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'instansi']],
                 ['label' => 'Pegawai', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'pegawai']],
+                ['label' => 'Kegiatan', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'kegiatan']],
                 // ['label' => 'Pegawai (Rumah/WFH)', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'pegawai-wfh']],
                 // ['label' => 'Khusus', 'icon' => 'circle-o', 'url' => ['/peta/index', 'mode' => 'khusus']],
             ]],
@@ -188,6 +189,7 @@ if(Yii::$app->params['mode']=='tukin') {
             ]],
             ['label' => 'Pegawai', 'icon' => 'list', 'items' => [
                 ['label' => 'Pegawai', 'icon' => 'user', 'url' => ['/pegawai/index']],
+                /*
                 ['label' => 'Pegawai Sertifikasi', 'icon' => 'graduation-cap','url' => ['/pegawai-sertifikasi/index']],
                 ['label' => 'Pegawai Penghargaan', 'icon' => 'trophy','url' => ['/pegawai-penghargaan/index']],
                 ['label' => 'Pegawai Cuti Ibadah', 'icon' => 'calendar','url' => ['/pegawai-cuti-ibadah/index']],
@@ -196,6 +198,7 @@ if(Yii::$app->params['mode']=='tukin') {
                 ['label' => 'Pegawai Seragam Dinas', 'icon' => 'gavel','url' => ['/pegawai-atribut/index']],
                 ['label' => 'Pegawai Cuti Besar Non TPP', 'icon' => 'users','url' => ['/pegawai-non-tpp/index', 'id_pegawai_non_tpp_jenis' => PegawaiNonTppJenis::CUTI_BESAR]],
                 ['label' => 'Pegawai Tubel Non TPP', 'icon' => 'users','url' => ['/pegawai-non-tpp/index', 'id_pegawai_non_tpp_jenis' => PegawaiNonTppJenis::TUGAS_BELAJAR]],
+                */
             ]],
             ['label' => 'Grup Pegawai', 'icon' => 'users', 'url' => ['/grup/index']],
             ['label' => 'Jabatan', 'icon' => 'star', 'items'=>[

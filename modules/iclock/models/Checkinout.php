@@ -253,11 +253,10 @@ class Checkinout extends \yii\db\ActiveRecord
         return $peta;
     }
 
-    public function getAllPetaKhusus()
+    public function getAllPetaKegiatan()
     {
         $query = Peta::find();
         $query->andWhere('id_instansi is null AND id_pegawai is null');
-        $query->andWhere(['status_kunci' => Peta::BUKA]);
 
         $allPeta = $query->all();
 
@@ -270,7 +269,7 @@ class Checkinout extends \yii\db\ActiveRecord
             return $this->status_lokasi_kantor = self::DALAM_KANTOR;
         }
 
-        foreach ($this->getAllPetaKhusus() as $peta) {
+        foreach ($this->getAllPetaKegiatan() as $peta) {
             $x = floatval($this->latitude) - floatval($peta->latitude);
             $y = floatval($this->longitude) - floatval($peta->longitude);
 
