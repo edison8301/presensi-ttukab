@@ -46,14 +46,14 @@ class UserController extends Controller
 
         $model = User::findOne(['username'=>$params['username']]);
 
-        if($model===null) {
+        if ($model===null) {
             return [
                 'change_password' => false,
                 'message' => 'User tidak ditemukan'
             ];
         }
 
-        if(Yii::$app->getSecurity()->validatePassword($params['password_lama'],$model->password)==false)
+        if (Yii::$app->getSecurity()->validatePassword($params['password_lama'],$model->password) == false)
         {
             return [
                 'change_password' => false,

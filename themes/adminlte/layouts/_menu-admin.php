@@ -18,6 +18,7 @@ if(Yii::$app->params['mode']=='tukin') {
             ['label' => 'ABSENSI', 'options' => ['class' => 'header']],
             ['label' => 'Kegiatan', 'icon' => 'folder', 'url' => ['/kegiatan/index']],
             ['label' => 'Perangkat Daerah', 'icon' => 'folder', 'url' => ['/instansi/index-kegiatan']],
+            ['label' => 'Ketidakhadiran', 'icon' => 'folder', 'url' => ['/kegiatan-ketidakhadiran/index']],
             ['label' => 'MENU SISTEM', 'options' => ['class' => 'header']],
             ['label' => 'Perangkat Daerah', 'icon' => 'building', 'url' => ['/instansi/index']],
             ['label' => 'Peta', 'icon' => 'map-marker', 'items' => [
