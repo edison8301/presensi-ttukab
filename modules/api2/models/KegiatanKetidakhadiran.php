@@ -4,6 +4,8 @@
 namespace app\modules\api2\models;
 
 use app\components\Helper;
+use Yii;
+use yii\helpers\Url;
 
 class KegiatanKetidakhadiran extends \app\models\KegiatanKetidakhadiran
 {
@@ -28,8 +30,9 @@ class KegiatanKetidakhadiran extends \app\models\KegiatanKetidakhadiran
             'id_kegiatan_ketidakhadiran_jenis' => strval($this->id_kegiatan_ketidakhadiran_jenis),
             'penjelasan' => strval($this->penjelasan),
             'checktime' => strval($this->checktime),
+            'waktu_cek' => $this->getWaktuCek(),
             'foto_pendukung' => strval($this->foto_pendukung),
-            'url_foto_pendukung' => null
+            'url_foto_pendukung' => $this->getUrlFotoPendukung(),
         ];
     }
 
@@ -47,6 +50,34 @@ class KegiatanKetidakhadiran extends \app\models\KegiatanKetidakhadiran
         }
 
         return $output;
+    }
+
+    public function getUrlFotoPendukung()
+    {
+        $url = Url::base(true);
+        $url .= '/uploads/foto-pendukung/';
+        $url .= $this->foto_pendukung;
+
+        $headers = get_headers($url, 1);
+
+        if (str_contains($headers[0], '200') == false) {
+            return Url::base(true) . '/images/image-not-found.png';
+        }
+
+        return $url;
+    }
+
+    public function getWaktuCek()
+    {
+        if ($this->checktime == null) {
+            return null;
+        }
+
+        $datetime = \DateTime::createFromFormat('Y-m-d H:i:s', $this->checktime);
+        $string = Helper::getTanggal($datetime->format('Y-m-d'));
+        $string .= ', ' . $datetime->format('H:i:s');
+
+        return $string;
     }
 
 }
