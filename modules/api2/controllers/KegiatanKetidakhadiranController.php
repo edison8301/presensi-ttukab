@@ -70,9 +70,11 @@ class KegiatanKetidakhadiranController extends Controller
 
             if ($model->save()) {
 
-                $foto_decode = base64_decode(Yii::$app->request->post('foto_pendukung_encode'));
-                $path = Yii::$app->basePath . '/web/uploads/foto-pendukung/';
-                file_put_contents($path . $model->foto_pendukung, $foto_decode);
+                if (Yii::$app->request->post('foto_pendukung_encode') != null) {
+                    $foto_decode = base64_decode(Yii::$app->request->post('foto_pendukung_encode'));
+                    $path = Yii::$app->basePath . '/web/uploads/foto-pendukung/';
+                    file_put_contents($path . $model->foto_pendukung, $foto_decode);
+                }
 
                 Yii::$app->response->statusCode = 200;
                 return [
@@ -99,11 +101,63 @@ class KegiatanKetidakhadiranController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $fotoPendukungLama = $model->foto_pendukung;
+
+        if (Yii::$app->request->post()) {
+            $fotoPendukung = $model->foto_pendukung;
+            $model->attributes = Yii::$app->request->post();
+
+            $statusUpload = false;
+            if (Yii::$app->request->post('foto_pendukung') != null) {
+                $statusUpload = true;
+
+                $fotoPendukung = $model->foto_pendukung;
+                $fotoPendukungArray = explode('.', $fotoPendukung);
+                $ext = $fotoPendukungArray[count($fotoPendukungArray)-1];
+
+                $model->foto_pendukung = time() . '_' . $model->nip . '.' . $ext;
+            }
+
+            if (Yii::$app->request->post('foto_pendukung') == null) {
+                $model->foto_pendukung = $fotoPendukung;
+            }
+
+            $model->updated_at = date('Y-m-d H:i:s');
+
+            if ($model->save()) {
+
+                if ($statusUpload && Yii::$app->request->post('foto_pendukung_encode') != null) {
+                    $foto_decode = base64_decode(Yii::$app->request->post('foto_pendukung_encode'));
+                    $path = Yii::$app->basePath . '/web/uploads/foto-pendukung/';
+                    file_put_contents($path . $model->foto_pendukung, $foto_decode);
+
+                    $pathLama = Yii::$app->basePath . '/web/uploads/foto-pendukung/' . $fotoPendukungLama;
+                    if ($fotoPendukungLama != null AND file_exists($pathLama) !== false) {
+                        unlink($pathLama);
+                    }
+                }
+
+                Yii::$app->response->statusCode = 200;
+                return [
+                    'status' => 'success',
+                    'message' => 'Data Berhasil Disimpan',
+                    'data' => $model
+                ];
+            }
+        }
+
+        Yii::$app->response->statusCode = 400;
+        return [
+            'status' => 'failed',
+            'message' => 'Data Gagal Disimpan',
+            'messageError' => $model->errors
+        ];
     }
 
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
+        $fotoPendukung = $model->foto_pendukung;
 
         if ($model===null) {
             return [
@@ -113,6 +167,12 @@ class KegiatanKetidakhadiranController extends Controller
         }
 
         if ($model->delete()) {
+
+            $path = Yii::$app->basePath . '/web/uploads/foto-pendukung/' . $fotoPendukung;
+            if ($fotoPendukung != null AND file_exists($path) !== false) {
+                unlink($path);
+            }
+
             return [
                 'success' => true,
                 'message' => 'Data berhasil dihapus'

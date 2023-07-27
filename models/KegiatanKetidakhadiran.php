@@ -58,4 +58,9 @@ class KegiatanKetidakhadiran extends \yii\db\ActiveRecord
             'deleted_at' => 'Deleted At',
         ];
     }
+
+    public function getKegiatanKetidakhadiranJenis()
+    {
+        return $this->hasOne(KegiatanKetidakhadiranJenis::class, ['id' => 'id_kegiatan_ketidakhadiran_jenis']);
+    }
 }

@@ -28,6 +28,7 @@ class KegiatanKetidakhadiran extends \app\models\KegiatanKetidakhadiran
             'id' => strval($this->id),
             'nip' => strval($this->nip),
             'id_kegiatan_ketidakhadiran_jenis' => strval($this->id_kegiatan_ketidakhadiran_jenis),
+            'jenis' => strval(@$this->kegiatanKetidakhadiranJenis->nama),
             'penjelasan' => strval($this->penjelasan),
             'checktime' => strval($this->checktime),
             'waktu_cek' => $this->getWaktuCek(),
