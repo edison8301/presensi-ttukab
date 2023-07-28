@@ -94,21 +94,21 @@ $jabatan->bulan = $searchModel->bulan;
     <?php } ?>
     <td style="text-align: center;">
         <?php if (User::isAdmin() || User::isMapping()) { ?>
-        <?= Html::a('<i class="glyphicon glyphicon-plus"></i>', [
+        <?php /* Html::a('<i class="glyphicon glyphicon-plus"></i>', [
                 '/jabatan/create',
                 'id_instansi'=>$jabatan->id_instansi,
                 'id_instansi_bidang'=>$jabatan->id_instansi_bidang,
                 'id_induk' => $jabatan->id
-        ], ['data-toggle' => 'tooltip', 'title' => 'Tambah Sub Jabatan']); ?>
+        ], ['data-toggle' => 'tooltip', 'title' => 'Tambah Sub Jabatan']); */ ?>
         <?= Html::a('<i class="glyphicon glyphicon-pencil"></i>', ['/jabatan/update', 'id' => $jabatan->id], ['data-toggle' => 'tooltip', 'title' => 'Edit']); ?>
-        <?= Html::a('<i class="glyphicon glyphicon-trash"></i>', ['/jabatan/delete', 'id' => $jabatan->id], [
+        <?php /* Html::a('<i class="glyphicon glyphicon-trash"></i>', ['/jabatan/delete', 'id' => $jabatan->id], [
             'data' => [
                 'toggle' => 'tooltip',
                 'method' => 'post',
                 'confirm' => 'Yakin akan menhapus jabatan?'
             ],
             'title' => 'Hapus',
-        ]); ?>
+        ]); */ ?>
         <?php } ?>
     </td>
 </tr>

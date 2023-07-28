@@ -19,4 +19,9 @@ class Config
     {
         return @Yii::$app->params['pengumumanAktif'];
     }
+
+    public static function urlAnjab()
+    {
+        return @Yii::$app->params['urlAnjab'];
+    }
 }

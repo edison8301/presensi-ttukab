@@ -70,61 +70,7 @@ class SiteController extends Controller
             return $this->redirect(['site/login']);
         }
 
-        if(User::isAdmin()) {
-            return $this->redirect(['/absensi/instansi-pegawai/index-pegawai']);
-        }
-
-        if(User::isVerifikator()) {
-            return $this->redirect(['/absensi/instansi-pegawai/index-pegawai']);
-        }
-
-        if(User::isInstansi()) {
-            return $this->redirect(['/absensi/instansi-pegawai/index-pegawai']);
-        }
-
-        if(User::isAdminInstansi()) {
-            return $this->redirect(['/absensi/instansi-pegawai/index-pegawai']);
-        }
-
-        if(User::isPegawai()) {
-            return $this->redirect(['/pegawai/profil']);
-        }
-
-        if(User::isGrup()) {
-            return $this->redirect(['/absensi/pegawai/index-shift-kerja']);
-        }
-
-        if (User::isMapping()) {
-            return $this->redirect(['/instansi/index']);
-        }
-
-        if (User::isAdminIki()) {
-            return $this->redirect(['/kinerja/instansi-pegawai/rekap-iki']);
-        }
-
-        if (User::isOperatorAbsen()) {
-            return $this->redirect(['/absensi/instansi-pegawai/index-pegawai']);
-        }
-
-        if (Session::isOperatorStruktur()) {
-            return $this->redirect(['/instansi/index']);
-        }
-
-        if (Session::isPemeriksaAbsensi()) {
-            return $this->redirect(['/absensi/instansi-rekap-absensi/index']);
-        }
-
-        if (Session::isPemeriksaKinerja()) {
-            return $this->redirect(['/kinerja/instansi-pegawai-skp/index-v3']);
-        }
-
-        if (Session::isPemeriksaIki()) {
-            return $this->redirect(['/kinerja/instansi-pegawai/index-iki']);
-        }
-
-        if (Session::isMappingRpjmd()) {
-            return $this->redirect(['/kinerja/kegiatan-tahunan/index-v2']);
-        }
+        return $this->redirect(['/kegiatan/index']);
     }
 
     /**

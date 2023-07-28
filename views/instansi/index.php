@@ -13,18 +13,21 @@ $this->title = 'Daftar Perangkat Daerah';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-
-<?= $this->render('_filter',['searchModel'=>$searchModel]); ?>
-
 <div class="instansi-index box box-primary">
 
     <div class="box-header">
-        <?= Instansi::getLinkButtonCreate() ?>
+        <h3 class="box-title">
+            <?= $this->title ?>
+        </h3>
     </div>
 
     <div class="box-body">
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <div style="margin-bottom: 20px;">
+        <?= Html::a('<i class="fa fa-refresh"></i> Sinkronisasi Perangkat Daerah Anjab', [
+            '/instansi/import-from-anjab'
+        ], ['class' => 'btn btn-danger btn-flat']) ?>
+    </div>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -36,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\SerialColumn',
                 'header'=> 'No',
-                'headerOptions' => ['style'=>'text-align:center'],
+                'headerOptions' => ['style'=>'text-align:center;width:50px;'],
                 'contentOptions' => ['style'=>'text-align:center']
             ],
             [
@@ -46,54 +49,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions'=>['style'=>'text-align:left;'],
             ],
             [
-                'attribute'=>'singkatan',
-                'format'=>'raw',
-                'headerOptions'=>['style'=>'text-align:center;'],
-                'contentOptions'=>['style'=>'text-align:center;'],
-            ],
-            [
-                'attribute'=>'id_instansi_jenis',
-                'format'=>'raw',
-                'value' => function(Instansi $data) {
-                    return $data->instansiJenis->nama;
-                },
-                'filter'=>InstansiJenis::getList(),
-                'headerOptions'=>['style'=>'text-align:center;'],
-                'contentOptions'=>['style'=>'text-align:center;'],
-            ],
-            [
-                'label'=>'Username',
-                'format'=>'raw',
-                'value'=>function(Instansi $data) {
-                    return $data->getUsername();
-                },
-                'headerOptions' => ['style'=>'text-align:center;width:150px;'],
-                'contentOptions'=>['style'=>'text-align:center;']
-            ],
-            [
-                'attribute' => 'status_aktif',
-                'label' => 'Status',
-                'format'=>'raw',
-                'filter' => [1 => 'Aktif', 0 => 'Tidak Aktif'],
-                'value'=>function(Instansi $data) {
-                    return $data->getLabelStatusAktif();
-                },
-                'headerOptions' => ['style'=>'text-align:center;width:80px;'],
-                'contentOptions'=>['style'=>'text-align:center;']
-            ],
-            [
                 'format'=>'raw',
                 'value'=>function(Instansi $data) {
                     $output = '';
                     $output .= $data->getLinkIconViewJabatan().' ';
                     $output .= $data->getLinkIconUserSetPassword().' ';
-                    $output .= $data->getLinkIconView().' ';
-                    $output .= $data->getLinkIconUpdate().' ';
-                    $output .= $data->getLinkIconDelete().' ';
 
                     return trim($output);
                 },
-                'headerOptions' => ['style'=>'text-align:center;width:100px;'],
+                'headerOptions' => ['style'=>'text-align:center;width:80px;'],
                 'contentOptions'=>['style'=>'text-align:center;']
             ],
         ],

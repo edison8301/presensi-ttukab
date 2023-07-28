@@ -29,11 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="pegawai-index box box-primary">
 
     <div class="box-header">
+        <?php /*
         <?= Html::a('<i class="fa fa-plus"></i> Tambah Pegawai', ['create'], ['class' => 'btn btn-primary btn-flat']) ?>
         <?php //Html::a('<i class="fa fa-print"></i> Export Excel Pegawai', Yii::$app->request->url.'&export=1', ['class' => 'btn btn-primary btn-flat','data-confirm' => 'Proses Export Data Keseluruhan Ini Memakan Waktu Beberapa Menit']) ?>
         <?= $this->render('_modal-pegawai-export-form',[
             'pegawaiExportForm' => $pegawaiExportForm
         ]) ?>
+        */ ?>
+        <?= Html::a('<i class="fa fa-refresh"></i> Sinkronisasi Pegawai Anjab', [
+            '/pegawai/import-from-anjab',
+        ], ['class' => 'btn btn-danger btn-flat']) ?>
     </div>
 
     <div class="box-body">

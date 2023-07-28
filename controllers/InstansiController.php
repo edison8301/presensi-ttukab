@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\Config;
 use app\components\Helper;
 use app\models\InstansiPegawai;
 use app\models\Jabatan;
@@ -22,7 +23,9 @@ use app\models\InstansiSearch;
 use app\models\User;
 use app\models\UserRole;
 use kartik\mpdf\Pdf;
+use yii2mod\query\ArrayQuery;
 use yii\filters\VerbFilter;
+use yii\httpclient\Client;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 /**
@@ -46,7 +49,7 @@ class InstansiController extends Controller
                 'class' => \yii\filters\AccessControl::class,
                 'rules' => [
                     [
-                        'actions'=>['create','update','delete','set-session', 'index-kegiatan', 'view-kegiatan'],
+                        'actions'=>['create','update','delete','set-session', 'index-kegiatan', 'view-kegiatan', 'import-from-anjab'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function() { return User::isAdmin(); }
@@ -885,5 +888,66 @@ CSS;
             $row++;
             $this->renderRowRekapCkhpIki($spreadsheet, $sub, $bulan, $row, null, $indent);
         }
+    }
+
+    public function actionImportFromAnjab()
+    {
+        $url = Config::urlAnjab();
+        $url .= '/index.php?r=api/instansi';
+
+        $client = new Client();
+        $response = $client->createRequest()
+            ->setMethod('GET')
+            ->setUrl($url)
+            ->send();
+
+        if ($response->isOk == false) {
+            Yii::$app->session->setFlash('error','Terjadi kesalahan. Silahkan coba lagi nanti');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+
+        $allInstansi = Instansi::find()->all();
+
+        foreach($allInstansi as $instansi) {
+            $instansi->updateAttributes([
+                'status_hapus' => 1
+            ]);
+        }
+
+        $arrayInstansi = $response->data;
+
+        foreach($arrayInstansi as $data) {
+
+            $query = new ArrayQuery();
+            $query->from($allInstansi);
+            $query->andWhere([
+                'id' => $data['id']
+            ]);
+
+            $instansi = $query->one();
+
+            if ($instansi === false) {
+                $instansi = new Instansi([
+                    'id' => $data['id'],
+                    'nama' => @$data['nama'],
+                    'id_induk' => @$data['id_induk'],
+                    'status_hapus' => '0'
+                ]);
+
+                if ($instansi->save() == false) {
+                    print_r($instansi->getErrors());
+                    die;
+                }
+            } else {
+                $instansi->updateAttributes([
+                    'nama' => @$data['nama'],
+                    'id_induk' => @$data['id_induk'],
+                    'status_hapus' => '0',
+                ]);
+            }
+        }
+
+        Yii::$app->session->setFlash('success','Perangkat Daerah berhasil disinkronkan');
+        return $this->redirect(Yii::$app->request->referrer);
     }
 }

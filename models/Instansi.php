@@ -97,7 +97,7 @@ class Instansi extends \yii\db\ActiveRecord
             [['id_instansi_jenis', 'id_induk'], 'integer'],
             [['nama', 'singkatan', 'alamat', 'telepon', 'email'], 'string', 'max' => 255],
             [['bulan', 'tahun', 'tanggal'], 'safe'],
-            [['id_instansi_lokasi', 'status_aktif'], 'integer'],
+            [['id_instansi_lokasi', 'status_aktif', 'status_hapus'], 'integer'],
         ];
     }
 
@@ -122,6 +122,8 @@ class Instansi extends \yii\db\ActiveRecord
     public static function find()
     {
         $find = parent::find();
+        $find->andWhere(['status_hapus' => 0]);
+
         /*
         if (PHP_SAPI !== 'cli' && User::isInstansi()) {
             $find->andWhere(['id' => User::getIdInstansi()]);

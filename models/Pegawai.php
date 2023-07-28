@@ -4230,11 +4230,13 @@ class Pegawai extends \yii\db\ActiveRecord
         ]);
 
         if ($model === null) {
+            $nip = trim($this->nip);
+
             $model = new User;
-            $model->username = $this->nip;
+            $model->username = $nip;
             $model->id_pegawai = $this->id;
             $model->id_user_role = UserRole::PEGAWAI;
-            $model->password = Yii::$app->getSecurity()->generatePasswordHash($this->nip);
+            $model->password = Yii::$app->getSecurity()->generatePasswordHash($nip);
 
             if (!$model->save()) {
                 //print_r($model->getErrors());
