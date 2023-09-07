@@ -37,6 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
     </div>
 </div>
+
+<?php /*
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">Peta Jabatan</h3>
@@ -47,6 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </a>
     </div>
 </div>
+*/ ?>
 
 <div class="instansi-view box box-primary">
 
@@ -56,12 +59,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <button class="btn btn-sm btn-primary btn-flat" data-widget="collapse"><i class="fa fa-minus"></i></button>
         </div>
     </div>
-    <div class="box-header">
-        <?= Html::a('<i class="fa fa-refresh"></i> Sinkronisasi Jabatan Anjab', [
-            '/jabatan/import-from-anjab',
-            'id_instansi' => $model->id,
-        ], ['class' => 'btn btn-danger btn-flat']) ?>
-    </div>
 
     <div class="box-body">
 
@@ -69,21 +66,11 @@ $this->params['breadcrumbs'][] = $this->title;
             <thead>
             <tr>
                 <th style="text-align: center; vertical-align: middle">Nama Jabatan</th>
-                <th style="text-align: center; vertical-align: middle">Bidang</th>
                 <th style="text-align: center;">Jenis Jabatan</th>
-                <?php if ($searchModel->mode != 'abk') { ?>
-                    <th style="text-align: center; width: 50px">Nilai<br/>Jabatan</th>
-                    <th style="text-align: center; width: 50px">Kelas<br/>Jabatan</th>
-                    <th style="text-align: center; vertical-align: middle">Pegawai</th>
-                    <th style="text-align: center">Mutasi/<br/>Promosi</th>
-                    <th style="text-align: center">Status<br/>Verifikasi</th>
-                <?php } ?>
-                <?php if ($searchModel->mode == 'abk') { ?>
-                    <th style="text-align: center; width: 100px;">Jumlah Pegawai</th>
-                    <th style="text-align: center; width: 100px;">Hasil ABK</th>
-                    <th style="text-align: center; width: 100px;">Selisih</th>
-                <?php } ?>
-                <th style="width: 80px;"></th>
+                <th style="text-align: center; width: 50px">Nilai<br/>Jabatan</th>
+                <th style="text-align: center; width: 50px">Kelas<br/>Jabatan</th>
+                <th style="text-align: center; vertical-align: middle">Pegawai</th>
+                <th style="text-align: center">Mutasi/<br/>Promosi</th>
             </tr>
             </thead>
             <?php foreach($model->manyJabatanKepala as $jabatan) { ?>

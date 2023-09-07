@@ -31,10 +31,9 @@ class PegawaiSearch extends Pegawai
     public function rules()
     {
         return [
-            [['id', 'id_instansi', 'id_jabatan', 'id_atasan', 'bulan', 'tahun', 'jumlah_userinfo', 'id_atasan_direct', 'status_absen_ceklis'], 'integer'],
+            [['id', 'id_instansi', 'id_jabatan', 'bulan', 'tahun', 'jumlah_userinfo', 'id_atasan_direct'], 'integer'],
             [['mode', 'nama_jabatan', 'tanggal'], 'safe'],
-            [['nama', 'nip', 'gender', 'tempat_lahir', 'tanggal_lahir', 'alamat', 'telepon', 'email', 'foto', 'grade'], 'safe'],
-            ['status_batas_pengajuan', 'boolean'],
+            [['nama', 'nip'], 'safe'],
             [['nama_jabatan_relasi','id_pegawai_jenis'],'safe'],
         ];
     }
@@ -84,12 +83,14 @@ class PegawaiSearch extends Pegawai
         $query->with(['instansi', 'atasan']);
 
         if (User::isPegawai() and $this->getIsScenarioAtasan()) {
+            /*
             $this->id_atasan = User::getIdPegawai();
             $query->joinWith('allInstansiPegawai');
             $query->andWhere('instansi_pegawai.id_atasan = :id_atasan OR
                 pegawai.id_atasan = :id_atasan',[
                     ':id_atasan'=>$this->id_atasan
             ]);
+            */
 
             /*
             if(User::getListIdJabatanBawahan()!=[]) {
@@ -119,33 +120,18 @@ class PegawaiSearch extends Pegawai
             $query->andWhere(['id' => User::getListIdPegawai()]);
         }
 
-        if($this->id_atasan!=null) {
-
-        }
-
         $query->andFilterWhere([
             'pegawai.id' => $this->id,
             // 'pegawai.id_instansi' => $this->id_instansi,
             'pegawai.id_jabatan' => $this->id_jabatan,
-            //'pegawai.id_atasan' => $this->id_atasan,
-            'pegawai.tanggal_lahir' => $this->tanggal_lahir,
-            'status_batas_pengajuan' => $this->status_batas_pengajuan,
             'pegawai.id_atasan' => $this->id_atasan_direct,
-            'status_absen_ceklis' => $this->status_absen_ceklis
         ]);
         $query->andFilterWhere(['or',
             ['like', 'pegawai.nama', $this->nama],
             ['like', 'pegawai.nip', $this->nama],
         ])
             ->andFilterWhere(['like', 'pegawai.nip', $this->nip])
-            ->andFilterWhere(['like', 'pegawai.gender', $this->gender])
             ->andFilterWhere(['like', 'pegawai.nama_jabatan', $this->nama_jabatan])
-            ->andFilterWhere(['like', 'pegawai.tempat_lahir', $this->tempat_lahir])
-            ->andFilterWhere(['like', 'pegawai.alamat', $this->alamat])
-            ->andFilterWhere(['like', 'pegawai.telepon', $this->telepon])
-            ->andFilterWhere(['like', 'pegawai.email', $this->email])
-            ->andFilterWhere(['like', 'pegawai.foto', $this->foto])
-            ->andFilterWhere(['like', 'pegawai.grade', $this->grade])
             ->andFilterWhere(['like', 'pegawai.id_pegawai_jenis', $this->id_pegawai_jenis]);
 
         return $query;

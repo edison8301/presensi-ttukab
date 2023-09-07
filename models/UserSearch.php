@@ -20,8 +20,8 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id','id_user_role','id_pegawai','id_grup','id_instansi'], 'integer'],
-            [['username', 'password', 'auth_key', 'access_token'], 'safe'],
+            [['id','id_role','id_pegawai','id_instansi'], 'integer'],
+            [['username', 'password'], 'safe'],
             [['nama_pegawai','nip_pegawai'], 'safe']
         ];
     }
@@ -61,15 +61,12 @@ class UserSearch extends User
 
         $query->andFilterWhere([
             'user.id' => $this->id,
-            'user.id_grup'=>$this->id_grup,
-            'user.id_user_role' => $this->id_user_role,
+            'user.id_role' => $this->id_role,
             'user.id_instansi' => $this->id_instansi
         ]);
 
         $query->andFilterWhere(['like', 'user.username', $this->username])
-            ->andFilterWhere(['like', 'user.password', $this->password])
-            ->andFilterWhere(['like', 'user.auth_key', $this->auth_key])
-            ->andFilterWhere(['like', 'user.access_token', $this->access_token]);
+            ->andFilterWhere(['like', 'user.password', $this->password]);
 
         return $query;
     }

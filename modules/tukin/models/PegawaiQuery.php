@@ -13,7 +13,7 @@ class PegawaiQuery extends \yii\db\ActiveQuery
 
     public function aktif()
     {
-        return $this->andWhere(['pegawai.status_hapus' => null]);
+        //return $this->andWhere(['pegawai.status_hapus' => null]);
     }
 
     public function all($db = null)

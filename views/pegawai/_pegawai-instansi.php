@@ -8,9 +8,6 @@ use app\components\Helper;
     <div class="box-header with-border">
         <h3 class="box-title">Perangkat Daerah dan Jabatan Pegawai</h3>
     </div>
-    <div class="box-header">
-        <?= $this->render('_modal-instansi',['pegawai'=>$model]); ?>
-    </div>
     <div class="box-body">
         <table class="table table-bordered table-striped">
             <thead>
@@ -22,7 +19,6 @@ use app\components\Helper;
                 <th style="text-align: center; width: 100px">Tanggal TMT</th>
                 <th style="text-align: center; width: 100px">Tanggal<br/>Mulai Efektif</th>
                 <th style="text-align: center; width: 100px">Tanggal<br/>Selesai Efektif</th>
-                <th style="width: 80px">&nbsp;</th>
             </tr>
             </thead>
             <?php $i = 1; ?>
@@ -30,13 +26,13 @@ use app\components\Helper;
                 <tr>
                     <td style="text-align: center"><?= $i++; ?></td>
                     <td>
-                        <?= $instansiPegawai->nama_instansi ?>
+                        <?= @$instansiPegawai->instansi->nama ?>
                     </td>
                     <td style="text-align: center">
-                        <?= $instansiPegawai->nama_jabatan ?>
+                        <?= @$instansiPegawai->jabatan->nama_jabatan ?>
                     </td>
                     <td style="text-align: center">
-                        <?= $instansiPegawai->nama_jabatan_atasan ?>
+                        <?= @$instansiPegawai->jabatanAtasan->nama_jabatan ?>
                     </td>
                     <td style="text-align: center">
                         <?= Helper::getTanggalSingkat($instansiPegawai->tanggal_berlaku) ?>
@@ -46,10 +42,6 @@ use app\components\Helper;
                     </td>
                     <td style="text-align: center">
                         <?= Helper::getTanggalSingkat($instansiPegawai->tanggal_selesai) ?>
-                    </td>
-                    <td style="text-align: center">
-                        <?= $instansiPegawai->getLinkIconUpdate(); ?>
-                        <?= $instansiPegawai->getLinkIconDelete(); ?>
                     </td>
                 </tr>
             <?php } ?>

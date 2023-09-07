@@ -162,6 +162,6 @@ class LoginForm extends Model
 
     public function isPegawai() {
         $user = $this->getUser();
-        return @$user->id_user_role === UserRole::PEGAWAI;
+        return @$user->id_role === UserRole::PEGAWAI;
     }
 }

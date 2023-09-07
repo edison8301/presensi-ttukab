@@ -135,7 +135,7 @@ class Pegawai extends \app\models\Pegawai
     public static function getDb()
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return Yii::$app->get('db');
+        return Yii::$app->get('db_anjab');
     }
 
     /**

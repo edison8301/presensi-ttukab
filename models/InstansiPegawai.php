@@ -72,6 +72,14 @@ class InstansiPegawai extends ActiveRecord
     }
 
     /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('db_anjab');
+    }
+
+    /**
      * @inheritdoc
      */
     public function behaviors()
@@ -427,11 +435,13 @@ class InstansiPegawai extends ActiveRecord
 
     public function getNamaJabatan($html = true)
     {
+        return @$this->jabatan->nama_jabatan;
         $plt = '';
 
-        if($this->status_plt == true) {
+        if ($this->status_plt == true) {
             $plt .= ' (Plt)';
         }
+
         if($this->id_jabatan != null) {
             /*
             if ($this->tanggal_mulai >= '2023-01-01') {

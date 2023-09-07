@@ -253,6 +253,14 @@ class Pegawai extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('db_anjab');
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
@@ -573,7 +581,7 @@ class Pegawai extends \yii\db\ActiveRecord
     {
         return $this->getInstansiPegawai()
             ->berlaku($tanggal)
-            ->andWhere(['status_plt' => 0])
+            //->andWhere(['status_plt' => 0])
             ->one();
     }
 
@@ -583,6 +591,7 @@ class Pegawai extends \yii\db\ActiveRecord
      */
     public function getInstansiPegawaiBerlakuPlt($tanggal = null)
     {
+        return null;
         return $this->getInstansiPegawai()
             ->berlaku($tanggal)
             ->andWhere(['status_plt' => 1])
@@ -5463,5 +5472,24 @@ class Pegawai extends \yii\db\ActiveRecord
         $string = substr($string, 0, -2);
 
         return $string;
+    }
+    
+    public function generateUser()
+    {
+        $user = User::findOne(['id_pegawai' => $this->id]);
+
+        if ($user != null) {
+            return $user;
+        }
+
+        $user = new User([
+            'id_role' => UserRole::PEGAWAI,
+            'id_pegawai' => $this->id,
+            'username' => trim($this->nip),
+            'password' => Yii::$app->getSecurity()->generatePasswordHash(trim($this->nip)),
+        ]);
+        $user->save();
+
+        return $user;
     }
 }

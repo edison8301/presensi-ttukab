@@ -36,7 +36,6 @@ class JabatanController extends Controller
                             'assign', 'remove', 'update-editable-status-verifikasi',
                             'update-atasan-kepala','perawatan', 'index-tpp',
                             'view-tpp', 'update-editable', 'update-atasan-kepala-v2',
-                            'import-from-anjab',
                         ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -390,76 +389,5 @@ class JabatanController extends Controller
         }
 
         return true;
-    }
-
-    public function actionImportFromAnjab($id_instansi)
-    {
-        $url = Config::urlAnjab();
-        $url .= '/index.php?r=api/anjab-jabatan';
-        $url .= '&id_instansi=' . $id_instansi;
-
-        $client = new Client();
-        $response = $client->createRequest()
-            ->setMethod('GET')
-            ->setUrl($url)
-            ->send();
-
-        if ($response->isOk == false) {
-            Yii::$app->session->setFlash('error','Terjadi kesalahan. Silahkan coba lagi nanti');
-            return $this->redirect(Yii::$app->request->referrer);
-        }
-
-        $allJabatan = Jabatan::findAll([
-            'id_instansi' => $id_instansi
-        ]);
-
-        Jabatan::updateAll([
-            'status_hapus' => 1
-        ],[
-            'id_instansi' => $id_instansi
-        ]);
-
-        $arrayJabatanAnjab = $response->data;
-
-        foreach($arrayJabatanAnjab as $jabatanAnjab) {
-            $query = new ArrayQuery();
-            $query->from($allJabatan);
-            $query->andWhere([
-                'id' => $jabatanAnjab['id']
-            ]);
-
-            $jabatanKehadiran = $query->one();
-
-            if($jabatanKehadiran === false) {
-                $jabatanKehadiran = new Jabatan([
-                    'id' => @$jabatanAnjab['id'],
-                    'nama' => @$jabatanAnjab['nama_jabatan'],
-                    'id_instansi' => @$jabatanAnjab['id_instansi'],
-                    'id_induk' => @$jabatanAnjab['id_parent'],
-                    'id_jenis_jabatan' => @$jabatanAnjab['id_jenis_jabatan'],
-                    'status_kepala' => @$jabatanAnjab['status_kepala'],
-                    'kelas_jabatan' => @$jabatanAnjab['kelas_jabatan'],
-                    'status_hapus' => '0'
-                ]);
-
-                if($jabatanKehadiran->save() == false) {
-                    print_r($jabatanKehadiran->getErrors());
-                    die;
-                }
-            } else {
-                $jabatanKehadiran->updateAttributes([
-                    'nama' => @$jabatanAnjab['nama_jabatan'],
-                    'id_induk'  => @$jabatanAnjab['id_parent'],
-                    'id_jenis_jabatan' => @$jabatanAnjab['id_jenis_jabatan'],
-                    'status_kepala' => @$jabatanAnjab['status_kepala'],
-                    'kelas_jabatan' => @$jabatanAnjab['kelas_jabatan'],
-                    'status_hapus' => '0'
-                ]);
-            }
-        }
-
-        Yii::$app->session->setFlash('success','Jabatan berhasil disinkronkan');
-        return $this->redirect(Yii::$app->request->referrer);
-
     }
 }

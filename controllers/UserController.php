@@ -67,7 +67,7 @@ class UserController extends Controller
     public function actionIndex($id_user_role = null)
     {
         $searchModel = new UserSearch();
-        $searchModel->id_user_role = $id_user_role;
+        $searchModel->id_role = $id_user_role;
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

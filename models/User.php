@@ -12,7 +12,7 @@ use function array_merge;
  * This is the model class for table "user".
  *
  * @property int $id
- * @property int $id_user_role
+ * @property int $id_role
  * @property int $id_opd
  * @property int $id_pegawai
  * @property int $id_instansi
@@ -45,6 +45,14 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public static function tableName()
     {
         return 'user';
+    }
+
+    /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('db_anjab');
     }
 
     public static function getList()
@@ -107,7 +115,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             return false;
         }
 
-        return Yii::$app->user->identity->id_user_role == UserRole::PEGAWAI;
+        return Yii::$app->user->identity->id_role == UserRole::PEGAWAI;
     }
 
     public static function getIdInstansi()
@@ -129,7 +137,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             return false;
         }
 
-        return Yii::$app->user->identity->id_user_role == UserRole::INSTANSI;
+        return Yii::$app->user->identity->id_role == UserRole::INSTANSI;
     }
 
     public static function isAdminInstansi()
@@ -157,7 +165,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             return null;
         }
 
-        return @Yii::$app->user->identity->id_user_role;
+        return @Yii::$app->user->identity->id_role;
     }
 
     public static function getIdGrup()
@@ -175,7 +183,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             return false;
         }
 
-        return @Yii::$app->user->identity->id_user_role == UserRole::GRUP;
+        return @Yii::$app->user->identity->id_role == UserRole::GRUP;
     }
 
     public static function isPegawaiEselonII()
@@ -194,7 +202,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             return false;
         }
 
-        return @Yii::$app->user->identity->id_user_role == UserRole::VERIFIKATOR;
+        return @Yii::$app->user->identity->id_role == UserRole::VERIFIKATOR;
     }
 
     public static function isMapping()
@@ -203,7 +211,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             return false;
         }
 
-        return @Yii::$app->user->identity->id_user_role == UserRole::MAPPING;
+        return @Yii::$app->user->identity->id_role == UserRole::MAPPING;
     }
 
     public static function getNama()
@@ -227,12 +235,14 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         if (User::getIdUserRole() == UserRole::ADMIN) {
             $user = Yii::$app->user->identity;
+            /*
             if ($user->force_logout === 1) {
                 $user->force_logout = 0;
                 $user->save(false);
                 Yii::$app->user->logout();
                 return Yii::$app->response->redirect(['site/login']);;
             }
+            */
             return true;
         } else {
             return false;
@@ -398,11 +408,11 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'password', 'id_user_role'], 'required'],
+            [['username', 'password', 'id_role'], 'required'],
             [['username'], 'unique', 'message' => '{attribute} sudah ada yang menggunakan'],
-            [['id_user_role'], 'safe'],
-            [['id_pegawai', 'id_instansi', 'id_grup', 'force_logout'], 'integer'],
-            [['username', 'password', 'auth_key', 'access_token'], 'string', 'max' => 255],
+            [['id_role'], 'safe'],
+            [['id_pegawai', 'id_instansi'], 'integer'],
+            [['username', 'password'], 'string', 'max' => 255],
             [['imei'], 'safe'],
         ];
     }
@@ -414,7 +424,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'id' => 'ID',
-            'id_user_role' => 'Role',
+            'id_role' => 'Role',
             'id_opd' => 'Opd',
             'id_pegawai' => 'Pegawai',
             'id_instansi' => 'Perangkat Daerah',
@@ -431,7 +441,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function getUserRole()
     {
-        return $this->hasOne(UserRole::className(), ['id' => 'id_user_role']);
+        return $this->hasOne(UserRole::className(), ['id' => 'id_role']);
     }
 
     /**
@@ -471,7 +481,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->auth_key;
+        //return $this->auth_key;
     }
 
     /**
@@ -479,7 +489,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        return $this->auth_key === $authKey;
+        //return $this->auth_key === $authKey;
     }
 
     /**
@@ -927,7 +937,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     public function visibleIdPegawai()
     {
-        if ($this->id_user_role == UserRole::PEGAWAI) {
+        if ($this->id_role == UserRole::PEGAWAI) {
             return true;
         }
 
@@ -936,15 +946,15 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     public function visibleIdInstansi()
     {
-        if ($this->id_user_role == UserRole::INSTANSI) {
+        if ($this->id_role == UserRole::INSTANSI) {
             return true;
         }
 
-        if ($this->id_user_role == UserRole::ADMIN_INSTANSI) {
+        if ($this->id_role == UserRole::ADMIN_INSTANSI) {
             return true;
         }
 
-        if ($this->id_user_role == UserRole::OPERATOR_ABSEN) {
+        if ($this->id_role == UserRole::OPERATOR_ABSEN) {
             return true;
         }
 
@@ -953,7 +963,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     public function visibleIdGrup()
     {
-        if ($this->id_user_role == UserRole::GRUP) {
+        if ($this->id_role == UserRole::GRUP) {
             return true;
         }
 

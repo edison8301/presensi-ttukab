@@ -23,12 +23,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="box-body">
 
-    <div style="margin-bottom: 20px;">
-        <?= Html::a('<i class="fa fa-refresh"></i> Sinkronisasi Perangkat Daerah Anjab', [
-            '/instansi/import-from-anjab'
-        ], ['class' => 'btn btn-danger btn-flat']) ?>
-    </div>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -53,11 +47,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function(Instansi $data) {
                     $output = '';
                     $output .= $data->getLinkIconViewJabatan().' ';
-                    $output .= $data->getLinkIconUserSetPassword().' ';
 
                     return trim($output);
                 },
-                'headerOptions' => ['style'=>'text-align:center;width:80px;'],
+                'headerOptions' => ['style'=>'text-align:center;width:50px;'],
                 'contentOptions'=>['style'=>'text-align:center;']
             ],
         ],

@@ -45,6 +45,7 @@ config/db_iclock.php
 config/db_tandatangan.php
 config/db_sakip.php
 config/db_adms.php
+config/db_anjab.php
 
 # db test config
 config/test_db.php

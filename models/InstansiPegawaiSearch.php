@@ -37,7 +37,7 @@ class InstansiPegawaiSearch extends InstansiPegawai
             [['id', 'id_instansi', 'id_pegawai', 'id_jabatan', 'status_hapus',
                 'id_jabatan_atasan','id_jabatan_induk','bulan'
             ], 'integer'],
-            [['tahun', 'nama_jabatan', 'tanggal_berlaku','tanggal_selesai',
+            [['tahun', 'tanggal_berlaku','tanggal_selesai',
                 'waktu_dihapus','tanggal_mulai','nama_pegawai','manyIdInstansi','nip_pegawai'
             ], 'safe'],
         ];
@@ -68,7 +68,7 @@ class InstansiPegawaiSearch extends InstansiPegawai
         $query->joinWith(['pegawai','jabatan']);
         $query->orderBy([
             'id_instansi' => SORT_ASC,
-            'jabatan.id_eselon' => SORT_ASC
+            //'jabatan.id_eselon' => SORT_ASC
         ]);
 
         $query->andWhere('pegawai.id IS NOT NULL');
@@ -130,7 +130,6 @@ class InstansiPegawaiSearch extends InstansiPegawai
 
         $query->andFilterWhere(['like', 'pegawai.nama', $this->nama_pegawai]);
         $query->andFilterWhere(['like', 'pegawai.nip', $this->nip_pegawai]);
-        $query->andFilterWhere(['like', 'instansi_pegawai.nama_jabatan', $this->nama_jabatan]);
         $query->andFilterWhere(['like', 'instansi_pegawai.tanggal_berlaku', $this->tanggal_berlaku]);
         $query->andFilterWhere(['like', 'instansi_pegawai.tanggal_mulai', $this->tanggal_mulai]);
         $query->andFilterWhere(['like', 'instansi_pegawai.tanggal_selesai', $this->tanggal_selesai]);

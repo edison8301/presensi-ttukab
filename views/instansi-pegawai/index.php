@@ -15,7 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="instansi-pegawai-index box box-primary">
 
     <div class="box-header">
-        <?= $this->render('_modal-instansi'); ?>
+        <h3 class="box-title"><?= $this->title ?></h3>
+        <?php /* $this->render('_modal-instansi'); */ ?>
         <?php //echo Html::a('<i class="fa fa-print"></i> Export Excel Instansi Pegawai', Yii::$app->request->url.'&export=1', ['class' => 'btn btn-success btn-flat']) ?>
     </div>
 
@@ -114,12 +115,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function(InstansiPegawai $data) {
                     $output = '';
                     $output .= $data->getLinkIconView().' ';
-                    $output .= $data->getLinkIconUpdate().' ';
-                    $output .= $data->getLinkIconDelete().' ';
 
                     return trim($output);
                 },
-                'headerOptions' => ['style'=>'text-align:center;width:80px;'],
+                'headerOptions' => ['style'=>'text-align:center;width:50px;'],
                 'contentOptions'=>['style'=>'text-align:center;']
             ]
         ],

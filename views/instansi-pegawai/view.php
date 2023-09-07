@@ -36,12 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'id_jabatan',
                 'format' => 'raw',
-                'value' => @$model->jabatan->nama,
+                'value' => @$model->jabatan->nama_jabatan,
             ],
             [
                 'label' => 'Atasan',
                 'format' => 'raw',
-                'value' => @$model->jabatanAtasan->nama,
+                'value' => @$model->jabatanAtasan->nama_jabatan,
             ],
             [
                 'attribute' => 'tanggal_berlaku',

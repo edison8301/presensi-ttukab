@@ -8,6 +8,7 @@
 
 namespace app\modules\api2\controllers;
 
+use app\models\Pegawai;
 use app\models\User;
 use Yii;
 use yii\web\Controller;
@@ -72,9 +73,14 @@ class SiteController extends Controller
         $imei = @trim($_POST['imei']);
 
         $user = User::findOne([
-            'username'=>$username
+            'username' => $username
         ]);
 
+        $pegawai = Pegawai::findOne(['nip' => $username]);
+        if ($pegawai != null && $user == null) {
+            $user = $pegawai->generateUser();
+        }
+        
 
         if($user === null) {
             return [

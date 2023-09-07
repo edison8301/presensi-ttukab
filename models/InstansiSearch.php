@@ -24,8 +24,8 @@ class InstansiSearch extends Instansi
     {
         return [
             [['id','id_induk','id_instansi_jenis','bulan'], 'integer'],
-            [['nama', 'singkatan', 'alamat', 'telepon', 'email'], 'safe'],
-            [['id_instansi_lokasi', 'status_aktif'], 'integer'],
+            [['nama', 'alamat', 'telepon'], 'safe'],
+            [['status_aktif'], 'integer'],
             [['mode', 'status_tampil'], 'safe'],
         ];
     }
@@ -62,15 +62,12 @@ class InstansiSearch extends Instansi
             'id' => $this->id,
             'id_induk'=>$this->id_induk,
             'id_instansi_jenis'=>$this->id_instansi_jenis,
-            'id_instansi_lokasi' => $this->id_instansi_lokasi,
             'status_aktif' => $this->status_aktif,
         ]);
 
         $query->andFilterWhere(['like', 'nama', $this->nama])
-            ->andFilterWhere(['like', 'singkatan', $this->singkatan])
             ->andFilterWhere(['like', 'alamat', $this->alamat])
-            ->andFilterWhere(['like', 'telepon', $this->telepon])
-            ->andFilterWhere(['like', 'email', $this->email]);
+            ->andFilterWhere(['like', 'telepon', $this->telepon]);
 
         return $query;
     }

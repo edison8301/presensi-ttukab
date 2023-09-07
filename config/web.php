@@ -55,6 +55,7 @@ $config = [
                 'path' => '/web',
             ],
             /*'authTimeout' => $params['authTimeout'],*/
+            /*
             'on beforeLogin' => function ($event) {
                 if ($event->identity->force_logout && $event->cookieBased) {
                     $event->isValid = false;
@@ -66,6 +67,7 @@ $config = [
                     $event->identity->save();
                 }
             }
+            */
         ],
         'session' => [
             'name' => '_tukinUser',
@@ -94,6 +96,7 @@ $config = [
         //'db_kinerja' => require(__DIR__ . '/db_kinerja.php'),
         //'db_absensi' => require(__DIR__ . '/db_absensi.php'),
         'db_iclock' => require(__DIR__ . '/db_iclock.php'),
+        'db_anjab' => require(__DIR__ . '/db_anjab.php'),
         //'db_tandatangan' => require(__DIR__ . '/db_tandatangan.php'),
         //'db_sakip' => require(__DIR__ . '/db_sakip.php'),
         'queue' => [

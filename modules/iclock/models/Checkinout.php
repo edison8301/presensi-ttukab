@@ -336,24 +336,6 @@ class Checkinout extends \yii\db\ActiveRecord
             }
         }
 
-        if (date('Y-m-d') < '2022-04-03') {
-            // peta pegawai wfh
-            $allPetaPegawaiBanyak = $this->getPetaPegawaiBanyak(['status_rumah' => 1]);
-            foreach ($allPetaPegawaiBanyak as $peta) {
-
-                $x = floatval($this->latitude) - floatval($peta->latitude);
-                $y = floatval($this->longitude) - floatval($peta->longitude);
-
-                $r = sqrt($x*$x + $y*$y);
-
-                $batas = $peta->jarak * 0.00000909;
-
-                if($r <= $batas) {
-                    return $this->status_lokasi_kantor = self::DALAM_KANTOR;
-                }
-            }
-        }
-
         return $this->status_lokasi_kantor = $status_lokasi_kantor;
     }
 

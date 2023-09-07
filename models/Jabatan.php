@@ -35,7 +35,7 @@ use yii\helpers\Html;
  * @property string $subbidang [varchar(255)]
  * @property int $persediaan_pegawai [int(11)]
  * @property float $penyeimbang [double(5,2)]
- * @property int $id_induk [int(11)]
+ * @property int $id_parent [int(11)]
  * @property bool $status_jumlah_tetap [tinyint(1)]
  * @property float $jumlah_tetap [double(20,2)]
  * @property int $status_verifikasi [int(11)]
@@ -98,7 +98,15 @@ class Jabatan extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'jabatan';
+        return 'anjab_jabatan';
+    }
+
+    /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('db_anjab');
     }
 
     public static function getListStatusKepala()
@@ -117,7 +125,7 @@ class Jabatan extends \yii\db\ActiveRecord
         return [
             // [['nama'], 'required'],
             [['nama'], 'string', 'max' => 255],
-            [['id_instansi', 'status_kepala', 'id_induk', 'id_jenis_jabatan',
+            [['id_instansi', 'status_kepala', 'id_parent', 'id_jenis_jabatan',
                 'kelas_jabatan','nilai_jabatan'
             ],'integer'],
             [['bulan','tahun', 'nilai_jabatan'],'integer'],
@@ -143,7 +151,7 @@ class Jabatan extends \yii\db\ActiveRecord
             'nama_2022' => 'Nama Jabatan (2022)',
             'nama_2023' => 'Nama Jabatan (2023)',
             'id_instansi' => 'Perangkat Daerah',
-            'id_induk' => 'Atasan Jabatan',
+            'id_parent' => 'Atasan Jabatan',
             'id_jabatan_jenis' => 'Jenis Jabatan',
             'id_jenis_jabatan' => 'Jenis Jabatan',
             'id_instansi_bidang' => 'Bidang',
@@ -172,7 +180,7 @@ class Jabatan extends \yii\db\ActiveRecord
     public static function find()
     {
         $query = new JabatanQuery(get_called_class());
-        $query->andWhere(['jabatan.status_hapus' => 0]);
+        //$query->andWhere(['jabatan.status_hapus' => 0]);
         return $query;
     }
 
@@ -189,7 +197,7 @@ class Jabatan extends \yii\db\ActiveRecord
 
     public function getJabatanInduk()
     {
-        return $this->hasOne(self::class, ['id' => 'id_induk']);
+        return $this->hasOne(self::class, ['id' => 'id_parent']);
     }
 
     public function getJabatanEvjab()
@@ -249,7 +257,7 @@ class Jabatan extends \yii\db\ActiveRecord
 
     public function getSubJabatan()
     {
-        return $this->hasMany(self::class, ['id_induk' => 'id']);
+        return $this->hasMany(self::class, ['id_parent' => 'id']);
     }
 
     public static function findByKode($kode)
@@ -334,7 +342,7 @@ class Jabatan extends \yii\db\ActiveRecord
     {
         $arrayQuery = new ArrayQuery();
         $arrayQuery->from($arrayJabatan);
-        $arrayQuery->andWhere(['id_induk'=>$id_jabatan]);
+        $arrayQuery->andWhere(['id_parent'=>$id_jabatan]);
 
         $list = [];
 
@@ -359,23 +367,7 @@ class Jabatan extends \yii\db\ActiveRecord
             $plt = ' (Plt)';
         }
 
-        $nama_jabatan = $this->nama;
-
-        /*
-
-        if (Session::getTahun() == 2021) {
-            $nama_jabatan = $this->nama_2021;
-        }
-
-        if (Session::getTahun() == 2022) {
-            $nama_jabatan = $this->nama_2022;
-        }
-
-        if (Session::getTahun() == 2023) {
-            $nama_jabatan = $this->nama_2023;
-        }
-
-        */
+        $nama_jabatan = $this->nama_jabatan;
 
         return $nama_jabatan . $plt;
     }
@@ -432,7 +424,7 @@ class Jabatan extends \yii\db\ActiveRecord
 
     public function getManySub()
     {
-        return $this->hasMany(static::class, ['id_induk' => 'id']);
+        return $this->hasMany(static::class, ['id_parent' => 'id']);
     }
 
     /**
@@ -446,12 +438,12 @@ class Jabatan extends \yii\db\ActiveRecord
         if(@$params['arrayJabatan']!=null) {
             $query = new ArrayQuery();
             $query->from($params['arrayJabatan']);
-            $query->andFilterWhere(['id_induk'=>$this->id]);
+            $query->andFilterWhere(['id_parent'=>$this->id]);
         }
 
         $query->andFilterWhere([
-            'jabatan.status_tampil' => @$params['status_tampil'],
-            'jabatan.id_instansi' => @$params['id_instansi'],
+            'anjab_jabatan.status_tampil' => @$params['status_tampil'],
+            'anjab_jabatan.id_instansi' => @$params['id_instansi'],
         ]);
 
         return $query->all();
@@ -667,11 +659,11 @@ class Jabatan extends \yii\db\ActiveRecord
             /** @var Jabatan $jabatanKepalaInstansi */
             $jabatanKepalaInstansi = $instansi->getManyJabatanKepala()->one();
             if ($jabatanKepalaInstansi !== null) {
-                return $this->updateAttributes(['id_induk' => $jabatanKepalaInstansi->id]);
+                return $this->updateAttributes(['id_parent' => $jabatanKepalaInstansi->id]);
             }
         }
         if ($this->status_kepala) {
-            return $this->updateAttributes(['id_induk' => null]);
+            return $this->updateAttributes(['id_parent' => null]);
         }
     }
 

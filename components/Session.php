@@ -18,7 +18,7 @@ class Session
             return null;
         }
 
-        return @Yii::$app->user->identity->id_user_role;
+        return @Yii::$app->user->identity->id_role;
     }
 
     public static function getIdUser()
@@ -28,7 +28,7 @@ class Session
 
     public static function isAdmin()
     {
-        return @Yii::$app->user->identity->id_user_role==UserRole::ADMIN;
+        return @Yii::$app->user->identity->id_role==UserRole::ADMIN;
     }
 
     public static function isInstansi()
@@ -37,7 +37,7 @@ class Session
             return false;
         }
 
-        return Yii::$app->user->identity->id_user_role == UserRole::INSTANSI;
+        return Yii::$app->user->identity->id_role == UserRole::INSTANSI;
     }
 
     public static function isAdminInstansi()
@@ -65,7 +65,7 @@ class Session
             return false;
         }
 
-        return Yii::$app->user->identity->id_user_role == UserRole::PEGAWAI;
+        return Yii::$app->user->identity->id_role == UserRole::PEGAWAI;
     }
 
     public static function getListSN()

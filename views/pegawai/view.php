@@ -36,41 +36,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->nip,
             ],
             [
-                'attribute' => 'nik',
-                'format' => 'raw',
-                'value' => $model->nik,
-            ],
-            [
-                'attribute' => 'gender',
-                'format' => 'raw',
-                'value' => $model->gender,
-            ],
-            [
-                'attribute' => 'tempat_lahir',
-                'format' => 'raw',
-                'value' => $model->tempat_lahir,
-            ],
-            [
-                'attribute' => 'tanggal_lahir',
-                'format' => 'raw',
-                'value' => $model->tanggal_lahir,
-            ],
-            [
-                'attribute' => 'alamat',
-                'format' => 'raw',
-                'value' => $model->alamat,
-            ],
-            [
-                'attribute' => 'telepon',
-                'format' => 'raw',
-                'value' => $model->telepon,
-            ],
-            [
-                'attribute' => 'email',
-                'format' => 'raw',
-                'value' => $model->email,
-            ],
-            [
                 'label' => 'Golongan',
                 'value' => @$model->pegawaiGolonganBerlaku->golongan->golongan
             ],
@@ -87,13 +52,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'id_pendidikan',
                 'value' => @$model->pendidikan->nama
             ],
-            /*
-            [
-                'attribute' => 'foto',
-                'format' => 'raw',
-                'value' => $model->foto,
-            ],
-            */
         ],
     ]) ?>
 
@@ -101,18 +59,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="box-footer">
         <?= Html::a('<i class="fa fa-list"></i> Daftar Pegawai', ['index'], ['class' => 'btn btn-primary btn-flat']) ?>
-        <?php if(\app\components\Session::isAdmin()) { ?>
-            <?= Html::a('<i class="fa fa-pencil"></i> Ubah Pegawai', [
-                '/pegawai/update',
-                'id' => $model->id,
-            ], ['class' => 'btn btn-primary btn-flat']) ?>
-        <?php } ?>
     </div>
 
 </div>
 
-<?php // $this->render('_pegawai_mutasi', ['model' => $model]); ?>
-
 <?= $this->render('_pegawai-instansi',['model' => $model]); ?>
 
+<?php /*
 <?= $this->render('_pegawai-golongan',['model' => $model]); ?>
+*/ ?>

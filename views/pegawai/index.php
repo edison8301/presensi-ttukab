@@ -28,18 +28,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="pegawai-index box box-primary">
 
+    <?php /*
     <div class="box-header">
-        <?php /*
         <?= Html::a('<i class="fa fa-plus"></i> Tambah Pegawai', ['create'], ['class' => 'btn btn-primary btn-flat']) ?>
         <?php //Html::a('<i class="fa fa-print"></i> Export Excel Pegawai', Yii::$app->request->url.'&export=1', ['class' => 'btn btn-primary btn-flat','data-confirm' => 'Proses Export Data Keseluruhan Ini Memakan Waktu Beberapa Menit']) ?>
         <?= $this->render('_modal-pegawai-export-form',[
             'pegawaiExportForm' => $pegawaiExportForm
         ]) ?>
-        */ ?>
-        <?= Html::a('<i class="fa fa-refresh"></i> Sinkronisasi Pegawai Anjab', [
-            '/pegawai/import-from-anjab',
-        ], ['class' => 'btn btn-danger btn-flat']) ?>
     </div>
+    */ ?>
 
     <div class="box-body">
 
@@ -114,14 +111,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'=>'raw',
                 'value'=>function(Pegawai $data) {
                     $output = '';
-                    $output .= $data->getLinkIconUserSetPassword().' ';
                     $output .= $data->getLinkIconView().' ';
-                    $output .= $data->getLinkIconUpdate().' ';
-                    $output .= $data->getLinkIconDelete().' ';
 
                     return trim($output);
                 },
-                'headerOptions' => ['style'=>'text-align:center;width:100px;'],
+                'headerOptions' => ['style'=>'text-align:center;width:50px;'],
                 'contentOptions'=>['style'=>'text-align:center;']
             ]
         ],

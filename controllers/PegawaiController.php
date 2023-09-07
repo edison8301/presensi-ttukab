@@ -61,7 +61,7 @@ class PegawaiController extends Controller
                     [
                         'actions' => ['create', 'update', 'delete',
                             'set-jumlah-userinfo', 'set-status-pengajuan',
-                            'login', 'import-from-anjab'
+                            'login'
                         ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -984,69 +984,5 @@ class PegawaiController extends Controller
             'pegawaiSearch' => $pegawaiSearch ,
             'pegawaiRekapAbsensi' => $pegawaiRekapAbsensi,
         ]);
-    }
-
-    public function actionImportFromAnjab()
-    {
-        $url = Config::urlAnjab();
-        $url .= '/index.php?r=api/pegawai';
-
-        $client = new Client();
-        $response = $client->createRequest()
-            ->setMethod('GET')
-            ->setUrl($url)
-            ->send();
-
-        if ($response->isOk == false) {
-            Yii::$app->session->setFlash('error','Terjadi kesalahan. Silahkan coba lagi nanti');
-            return $this->redirect(Yii::$app->request->referrer);
-        }
-
-        $allPegawai = Pegawai::find()->all();
-
-        foreach($allPegawai as $instansi) {
-            $instansi->updateAttributes([
-                'status_hapus' => date('Y-m-d')
-            ]);
-        }
-
-        $arrayPegawai = $response->data;
-
-        foreach($arrayPegawai as $data) {
-
-            $query = new ArrayQuery();
-            $query->from($allPegawai);
-            $query->andWhere([
-                'id' => $data['id']
-            ]);
-
-            $pegawai = $query->one();
-
-            $nip = str_replace(' ', '', @$data['nip']);
-            $nip = trim($nip);
-
-            if ($pegawai === false) {
-                $pegawai = new Pegawai([
-                    'id' => $data['id'],
-                    'nama' => @$data['nama'],
-                    'nip' => $nip,
-                    'status_hapus' => null
-                ]);
-
-                if ($pegawai->save(false) == false) {
-                    print_r($pegawai->getErrors());
-                    die;
-                }
-            } else {
-                $pegawai->updateAttributes([
-                    'nama' => @$data['nama'],
-                    'nip' => $nip,
-                    'status_hapus' => null,
-                ]);
-            }
-        }
-
-        Yii::$app->session->setFlash('success','Pegawai berhasil disinkronkan');
-        return $this->redirect(Yii::$app->request->referrer);
     }
 }

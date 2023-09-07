@@ -19,9 +19,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="box box-primary user-index">
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php /*
     <div class="box-header with-border">
-        <?= Html::a('<i class="fa fa-plus"></i> Tambah User', ['create','id_user_role'=>$searchModel->id_user_role], ['class' => 'btn btn-success btn-flat']) ?>
+        <?= Html::a('<i class="fa fa-plus"></i> Tambah User', ['create','id_user_role'=>$searchModel->id_role], ['class' => 'btn btn-success btn-flat']) ?>
     </div>
+    */ ?>
     <div class="box-body">
 
     <?= GridView::widget([
@@ -63,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return @$data->pegawai->nama;
                 },
                 'visible' =>($id_user_role == UserRole::PEGAWAI),
-                'headerOptions'=>['style'=>'text-align:center;width:200px'],
+                'headerOptions'=>['style'=>'text-align:center;width:300px'],
                 'contentOptions'=>['style'=>'text-align:center']
             ],
             [
@@ -76,16 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions'=>['style'=>'text-align:center']
             ],
             [
-                'attribute'=>'imei',
-                'value'=>function(User $data) {
-                    return $data->getListImei();
-                },
-                'visible'=>$id_user_role == UserRole::PEGAWAI ? true : false,                
-                'headerOptions'=>['style'=>'text-align:center;width:200px'],
-                'contentOptions'=>['style'=>'text-align:center']
-            ],
-            [
-                'attribute'=>'id_user_role',
+                'attribute'=>'id_role',
                 'value'=>function($data) {
                     return @$data->userRole->nama;
                 },
@@ -108,11 +101,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a('<i class="glyphicon glyphicon-lock"></i>',['user/set-password','id'=>$data->id],['data-toggle'=>'tooltip','title'=>'Set Password']);
                 }
             ],
+            /*
             [
                 'class' => 'app\components\ToggleActionColumn',
                 'headerOptions'=>['style'=>'text-align:center;width:80px'],
                 'contentOptions'=>['style'=>'text-align:center']
             ],
+            */
         ],
     ]); ?>
     </div>
