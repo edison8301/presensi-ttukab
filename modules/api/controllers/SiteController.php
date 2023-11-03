@@ -80,6 +80,11 @@ class SiteController extends Controller
             'username'=>$username
         ]);
 
+        $pegawai = Pegawai::findOne(['nip' => $username]);
+        if ($pegawai != null && $user == null) {
+            $user = $pegawai->generateUser();
+        }
+
 
         if($user === null) {
             return [
